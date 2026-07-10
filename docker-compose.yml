@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  postgres_vitaflow:
+    image: postgres:15-alpine
+    container_name: postgres_vitaflow
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: metodo4cs
+    volumes:
+      - postgres_vitaflow_data:/var/lib/postgresql/data
+    ports:
+      - "5441:5432"
+    networks:
+      - public
+
+  redis_vitaflow:
+    image: redis:7-alpine
+    container_name: redis_vitaflow
+    restart: always
+    ports:
+      - "6383:6379"
+    networks:
+      - public
+
+volumes:
+  postgres_vitaflow_data:
+
+networks:
+  public:
+    external: true

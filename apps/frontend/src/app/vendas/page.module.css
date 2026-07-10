@@ -1,0 +1,1546 @@
+.container {
+  color: #E2E8F0;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+.dashboardWrapper {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: #D946EF;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.subTitle {
+  font-size: 11px;
+  color: #6B7280;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.updatedText {
+  font-size: 9px;
+  color: #6B7280;
+  margin-right: 8px;
+}
+
+.btnRefresh {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #CBD5E1;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+.btnRefresh:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal Edit Campanha (Nivel Ferrari) */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid #2A2D43;
+  border-radius: 12px;
+  width: 780px;
+  max-width: 90vw;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+}
+
+.modalHeader {
+  padding: 16px 24px;
+  border-bottom: 1px solid #2A2D43;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modalHeaderSummary {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 10px;
+  color: #6B7280;
+  background: rgba(255,255,255,0.02);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.modalBody {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px 24px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroupFull {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.inputField {
+  background: #0F111A;
+  border: 1px solid #2A2D43;
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: #FFF;
+  font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.inputField:focus {
+  border-color: #D946EF;
+}
+
+.modalFooter {
+  padding: 16px 24px;
+  border-top: 1px solid #2A2D43;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+
+.btnDelete {
+  background: transparent;
+  border: none;
+  color: #EF4444;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: auto; /* Empurra os outros para a direita */
+  opacity: 0.8;
+}
+.btnDelete:hover {
+  opacity: 1;
+}
+
+.btnCancel {
+  background: transparent;
+  border: none;
+  color: #94A3B8;
+  font-weight: 600;
+  font-size: 11px;
+  cursor: pointer;
+}
+.btnCancel:hover {
+  color: #FFF;
+}
+
+.btnPrimary {
+  background: linear-gradient(135deg, #D946EF 0%, #C026D3 100%);
+  border: none;
+  color: #FFF;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 14px rgba(217, 70, 239, 0.4);
+}
+
+.controlsRow {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inputLabel {
+  font-size: 9px;
+  color: #6B7280;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.selectInput {
+  background-color: #000000;
+  border: 1px solid #1F2937;
+  color: #E5E7EB;
+  padding: 6px 32px 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  outline: none;
+  appearance: none;
+  min-width: 160px;
+  position: relative;
+}
+
+/* Tabela densa */
+.tableContainer {
+  flex: 1;
+  overflow-x: auto;
+  border: 1px solid #1F2937;
+  border-radius: 8px;
+  background-color: #0A0A0F; /* Darker than wrapper */
+  min-width: 0;
+  width: 100%;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px; /* extremely small, high density */
+  white-space: nowrap;
+}
+
+.dataTable th {
+  text-align: right;
+  padding: 6px 8px;
+  color: #6B7280;
+  font-weight: 700;
+  font-size: 8px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #1F2937;
+  background-color: #11121C;
+}
+.dataTable th:nth-child(1),
+.dataTable th:nth-child(2),
+.dataTable th:nth-child(3),
+.dataTable th:nth-child(4) {
+  text-align: left; /* Left align text columns */
+}
+
+.dataTable td {
+  padding: 6px 8px;
+  border-bottom: 1px solid #1F2937;
+  color: #E5E7EB;
+  text-align: right;
+  font-variant-numeric: tabular-nums; /* Align numbers perfectly */
+}
+
+.dataTable td:nth-child(1),
+.dataTable td:nth-child(2),
+.dataTable td:nth-child(3),
+.dataTable td:nth-child(4) {
+  text-align: left;
+}
+
+/* Mes Group Row Base */
+.groupHeader td {
+  font-weight: 700;
+  border-top: 1px solid #1F2937;
+}
+
+.btnCollapse {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.1);
+  color: #FFF;
+  border-radius: 2px;
+  font-size: 8px;
+  margin-right: 6px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Cores de Fundo Mensais */
+.rowMonthJan { background-color: rgba(220, 38, 38, 0.15); }
+.rowMonthJan td { color: #FCA5A5; } /* red-300 */
+.rowMonthFev { background-color: rgba(249, 115, 22, 0.15); }
+.rowMonthFev td { color: #FDBA74; } /* orange-300 */
+.rowMonthMar { background-color: rgba(234, 179, 8, 0.15); }
+.rowMonthMar td { color: #FDE047; } /* yellow-300 */
+.rowMonthAbr { background-color: rgba(34, 197, 94, 0.15); }
+.rowMonthAbr td { color: #86EFAC; } /* green-300 */
+.rowMonthMai { background-color: rgba(20, 184, 166, 0.15); }
+.rowMonthMai td { color: #5EEAD4; } /* teal-300 */
+.rowMonthJun { background-color: rgba(6, 182, 212, 0.15); }
+.rowMonthJun td { color: #67E8F9; } /* cyan-300 */
+
+/* Specific Data Cells overrides inside the groupHeader to keep bright colors */
+.groupHeader .textGreen { color: #4ADE80 !important; }
+.groupHeader .textTeal { color: #2DD4BF !important; }
+.groupHeader .textWhite { color: #FFF !important; }
+
+/* Micro elements */
+.productDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+.dotCyan { background-color: #2DD4BF; box-shadow: 0 0 4px #2DD4BF; }
+.dotPink { background-color: #D946EF; box-shadow: 0 0 4px #D946EF; }
+.dotPurple { background-color: #A855F7; box-shadow: 0 0 4px #A855F7; }
+
+.catBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  font-size: 8px;
+  font-weight: 700;
+  color: #FFF;
+}
+.catT { background-color: #6366F1; } /* Treinamento */
+.catC { background-color: #A855F7; } /* Curso */
+.catM { background-color: #D946EF; } /* Mentoria */
+
+.statusBadge {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 8px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+}
+.statusConcluida {
+  color: #2DD4BF;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+}
+.statusPlanejada {
+  color: #A855F7;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+/* Colunas Tipadas */
+.textTeal { color: #2DD4BF !important; }
+.textGreen { color: #4ADE80 !important; }
+.textRed { color: #EF4444 !important; }
+.textMuted { color: #6B7280 !important; }
+.textWhite { color: #FFFFFF !important; font-weight: 600; }
+.textBold { font-weight: 700; }
+
+/* Linha Normal Hover */
+.rowItem:hover {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Linha Total Geral */
+.rowTotal {
+  background-color: #11121C;
+  border-top: 2px solid #374151;
+}
+.rowTotal td {
+  font-weight: 700;
+  color: #FFF;
+  padding: 12px 8px;
+}
+.totalLabel {
+  font-size: 11px;
+}
+.totalSubLabel {
+  display: block;
+  font-size: 8px;
+  color: #6B7280;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* =======================================
+   Métricas VFlow (Ferrari)
+======================================== */
+
+.metricsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.metricsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.metricsTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #E5E7EB;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.metricsTitleDot {
+  width: 6px;
+  height: 6px;
+  background-color: #2DD4BF;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #2DD4BF;
+}
+
+.metricsSubtitle {
+  font-size: 10px;
+  color: #6B7280;
+  margin-top: 4px;
+  margin-left: 14px;
+}
+
+.pillNav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.pillBtn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #94A3B8;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.pillBtn:hover {
+  background: rgba(255,255,255,0.05);
+  color: #FFF;
+}
+.pillActive {
+  background: rgba(45, 212, 191, 0.15);
+  border-color: rgba(45, 212, 191, 0.3);
+  color: #2DD4BF;
+}
+
+/* Grids e Cards */
+.kpiGrid4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.kpiGrid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.kpiGrid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.megaCard, .kpiCard {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid #2A2D43;
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.megaCard:hover, .kpiCard:hover {
+  transform: translateY(-2px);
+  background: #1A1C23;
+  border-color: rgba(var(--kpi-rgb, 139, 92, 246), 0.6);
+  box-shadow: 0 0 20px rgba(var(--kpi-rgb, 139, 92, 246), 0.15);
+}
+
+.megaCard {
+  padding: 24px;
+}
+
+.cardTitle {
+  font-size: 9px;
+  color: #94A3B8;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.cardTitleHighlight {
+  color: #FBBF24; /* yellow for LTV */
+}
+.cardTitlePink {
+  color: #D946EF;
+}
+
+.cardValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFF;
+  margin-bottom: 4px;
+}
+.cardValueSmall {
+  font-size: 20px;
+}
+
+.cardSubtext {
+  font-size: 9px;
+  color: #6B7280;
+}
+
+.megaCardValue {
+  font-size: 32px;
+  font-weight: 800;
+  color: #FFF;
+  margin: 8px 0;
+}
+
+.megaCardLegend {
+  display: flex;
+  gap: 16px;
+  font-size: 10px;
+  color: #94A3B8;
+}
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Distribuição (Barra Horizontal) */
+.distBarWrapper {
+  width: 100%;
+  height: 24px;
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
+.distBarF1 {
+  background-color: #A855F7;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #FFF;
+}
+.distBarF2 {
+  background-color: #2DD4BF;
+  display: flex;
+  align-items: center;
+  padding-right: 8px;
+  justify-content: flex-end;
+  font-size: 9px;
+  font-weight: 700;
+  color: #111;
+}
+
+.distLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.distLegendRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: #94A3B8;
+}
+.distLegendVal {
+  color: #FFF;
+  font-weight: 600;
+}
+.textPurple { color: #A855F7 !important; }
+
+/* Funil */
+.funnelWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.funnelStep {
+  width: 100%;
+  background: #1B1E2E;
+  border: 1px solid #2A2D43;
+  border-radius: 6px;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  transition: all 0.3s ease;
+}
+
+.funnelStep:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(var(--kpi-rgb, 139, 92, 246), 0.2);
+}
+.funnelArrow {
+  color: #4B5563;
+  font-size: 10px;
+  margin: 4px 0;
+}
+.funnelLabel {
+  font-size: 10px;
+  color: #94A3B8;
+  margin-bottom: 4px;
+  display: block;
+}
+.funnelValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFF;
+}
+.funnelConv {
+  font-size: 9px;
+  color: #6B7280;
+}
+
+/* Fases Tabela Simples */
+.faseTable {
+  width: 100%;
+  font-size: 10px;
+  border-collapse: collapse;
+  margin-top: 16px;
+}
+.faseTable td {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  color: #94A3B8;
+}
+.faseTable td:last-child {
+  text-align: right;
+  color: #FFF;
+  font-weight: 600;
+}
+.faseTable tr:last-child td {
+  border-bottom: none;
+  font-size: 11px;
+  color: #FFF;
+  font-weight: 700;
+  padding-top: 12px;
+}
+.faseHeader {
+  margin-bottom: 4px;
+}
+.faseTitle {
+  font-size: 11px;
+  font-weight: 600;
+  color: #FFF;
+}
+.faseDesc {
+  font-size: 9px;
+  color: #6B7280;
+}
+
+/* Inteligencia Email / Grafico Barras */
+.sectionTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFF;
+  margin: 32px 0 16px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.chartContainer {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chartHeaderRow {
+  display: flex;
+  font-size: 8px;
+  color: #6B7280;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding-bottom: 8px;
+}
+
+.chartRow {
+  display: flex;
+  align-items: center;
+  font-size: 9px;
+  color: #94A3B8;
+  height: 14px;
+}
+
+.chartLabel {
+  width: 32px;
+  text-align: right;
+  padding-right: 12px;
+}
+
+.chartBarsArea {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.barPurple {
+  height: 10px;
+  background-color: #8B5CF6; /* Roxo */
+  border-radius: 2px;
+}
+
+.barPink {
+  height: 10px;
+  background-color: #D946EF; /* Magenta */
+  border-radius: 2px;
+}
+
+.chartValues {
+  width: 100px;
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  font-family: monospace;
+}
+
+.chartValPurple { color: #C4B5FD; }
+.chartValPink { color: #F0ABFC; }
+
+.insightBox {
+  margin-top: 24px;
+  background: rgba(30, 27, 75, 0.5); /* Fundo azul/roxo bem escuro */
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 6px;
+  padding: 16px;
+}
+.insightTitle {
+  font-size: 10px;
+  color: #A5B4FC;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.insightText {
+  font-size: 11px;
+  color: #E0E7FF;
+  line-height: 1.5;
+}
+.insightSub {
+  font-size: 9px;
+  color: #6366F1;
+  margin-top: 8px;
+}
+
+/* Email Table */
+.emailTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+  margin-top: 16px;
+}
+.emailTable th {
+  text-align: left;
+  padding: 8px;
+  color: #6B7280;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.emailTable td {
+  padding: 8px;
+  color: #94A3B8;
+  border-bottom: 1px solid rgba(255,255,255,0.02);
+}
+.emailTable tr:hover td {
+  background-color: rgba(255,255,255,0.02);
+}
+.emailSubject {
+  color: #E2E8F0;
+  font-weight: 500;
+}
+.insightCol {
+  color: #6B7280 !important;
+  font-style: italic;
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ═══════════════════════════════════════════════
+   ABA 1.1: CARDS VIEW
+═══════════════════════════════════════════════ */
+.cardsTabContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-bottom: 40px;
+}
+
+.monthGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.monthHeaderRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.monthTitleBox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.monthName {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.monthCount {
+  font-size: 11px;
+  color: #6B7280;
+}
+
+.monthTotalVal {
+  font-size: 13px;
+  color: #4ADE80;
+  font-weight: 600;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.campaignCard {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.campaignCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.cardTypeLabel {
+  font-size: 9px;
+  color: #6B7280;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.cardTitleLine {
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.cardDates {
+  font-size: 10px;
+  color: #9CA3AF;
+  margin-bottom: 20px;
+}
+
+.cardFaturamentoBox {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.cardFaturamentoLabel {
+  font-size: 9px;
+  color: #6B7280;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cardFaturamentoValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: #4ADE80;
+  letter-spacing: -0.5px;
+}
+
+.cardFooter {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cardLink {
+  color: #2DD4BF;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.cardLink:hover {
+  color: #5EEAD4;
+}
+
+/* ═══════════════════════════════════════════════
+   ABA 1.2: GRÁFICOS VIEW
+═══════════════════════════════════════════════ */
+.chartsTabContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-bottom: 40px;
+}
+.chartsTopCards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.chartMetricCard {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.chartMetricCard:hover {
+  transform: translateY(-2px);
+  background: #1A1C23;
+  border-color: rgba(var(--kpi-rgb, 139, 92, 246), 0.6);
+  box-shadow: 0 0 20px rgba(var(--kpi-rgb, 139, 92, 246), 0.15);
+}
+.chartMetricHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.chartMetricBadge {
+  font-size: 8px;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.chartMetricValue {
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+.chartMetricLabel {
+  font-size: 9px;
+  color: #6B7280;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.chartConfigBox {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 2px solid #D946EF;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.chartConfigBox:hover {
+  transform: translateY(-2px);
+  background: #1A1C23;
+  border-color: rgba(217, 70, 239, 0.6);
+  box-shadow: 0 0 20px rgba(217, 70, 239, 0.15);
+}
+
+.chartSectionTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.titleLine {
+  width: 2px;
+  height: 14px;
+  background: #D946EF;
+}
+.chartSelectRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.chartSelectGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.chartSelectLabel {
+  font-size: 9px;
+  font-weight: 700;
+  color: #9CA3AF;
+  letter-spacing: 0.5px;
+}
+.chartSelectWrapper {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+.chartSelect {
+  width: 100%;
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  padding: 12px 16px;
+  font-size: 13px;
+  outline: none;
+}
+.chartSelectIndicator {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.chartPeriodNav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.periodBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #9CA3AF;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.periodBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+.periodActive {
+  background: rgba(217, 70, 239, 0.1);
+  border-color: rgba(217, 70, 239, 0.3);
+  color: #D946EF;
+}
+
+.chartBox {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 2px solid #3B82F6;
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.chartBox:hover {
+  transform: translateY(-2px);
+  background: #1A1C23;
+  border-color: rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+.chartMockArea {
+  position: relative;
+  height: 350px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.02);
+  padding-left: 40px;
+  padding-bottom: 30px;
+}
+.chartAxisY {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 30px;
+  width: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 9px;
+  color: #6B7280;
+  text-align: right;
+  padding-top: 50px;
+}
+.chartAxisX {
+  position: absolute;
+  left: 40px;
+  right: 0;
+  bottom: 0;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  color: #6B7280;
+  padding: 0 10px;
+}
+
+/* ═══════════════════════════════════════════════
+   ABA 1.3: CALENDÁRIO VIEW
+═══════════════════════════════════════════════ */
+.calendarTabContainer {
+  display: flex;
+  flex-direction: column;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 16px;
+  padding: 28px;
+}
+.calendarHeaderRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+}
+.calendarDayHeader {
+  font-size: 11px;
+  font-weight: 700;
+  color: #A0AEC0;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.calendarGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(10, 12, 20, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.calendarRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  height: 72px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.calendarRow:last-child {
+  border-bottom: none;
+}
+.calendarCell {
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 10px;
+  font-size: 11px;
+  color: #718096;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.calendarCell:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+.calendarCell:last-child {
+  border-right: none;
+}
+.calendarBar {
+  position: absolute;
+  top: 10px;
+  height: 26px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  z-index: 10;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.calendarBar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.calendarLegendRow {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+  font-size: 10px;
+  color: #9CA3AF;
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════════
+   ABA 2.2: AULA AO VIVO VIEW
+═══════════════════════════════════════════════ */
+.aulaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.aulaHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.aulaHeaderSubtitle {
+  font-size: 10px;
+  font-weight: 700;
+  color: #F59E0B;
+  letter-spacing: 0.5px;
+}
+.aulaHeaderTitle {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+.aulaHeaderMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #6B7280;
+  font-weight: 500;
+}
+.aulaTopCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.aulaTopCard {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(var(--kpi-rgb, 255, 255, 255), 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.aulaTopCard:hover {
+  transform: translateY(-2px);
+  background: #1A1C23;
+  border-color: rgba(var(--kpi-rgb, 139, 92, 246), 0.6);
+  box-shadow: 0 0 20px rgba(var(--kpi-rgb, 139, 92, 246), 0.15);
+}
+.aulaTopCardLabel {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.aulaTopCardValue {
+  font-size: 28px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+.aulaTopCardSub {
+  font-size: 10px;
+  color: #6B7280;
+}
+
+.aulaTimelineBox {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 24px;
+}
+.aulaSectionTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.aulaChartArea {
+  display: flex;
+  height: 200px;
+  align-items: flex-end;
+  gap: 4px;
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.aulaBarCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+.aulaBarVal {
+  font-size: 10px;
+  color: #9CA3AF;
+  margin-bottom: 8px;
+}
+.aulaBar {
+  width: 100%;
+  background: #7C3AED;
+  border-radius: 2px 2px 0 0;
+  transition: all 0.3s;
+}
+.aulaBar:hover {
+  background: #8B5CF6;
+  transform: scaleY(1.02);
+  transform-origin: bottom;
+}
+.aulaBarTime {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12px;
+  font-size: 9px;
+  color: #6B7280;
+  text-align: center;
+  height: 24px;
+}
+
+.aulaTimelineStats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.aulaTimelineStatCard {
+  background: rgba(0,0,0,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  padding: 16px;
+}
+.aulaTimelineStatTitle {
+  font-size: 10px;
+  font-weight: 600;
+  color: #9CA3AF;
+  margin-bottom: 8px;
+}
+.aulaTimelineStatVal {
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.aulaTimelineStatSub {
+  font-size: 9px;
+  color: #6B7280;
+}
+
+.aulaBottomGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.aulaFunnelBox, .aulaMetricsBox {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.aulaFunnelBox:hover, .aulaMetricsBox:hover {
+  transform: translateY(-2px);
+  background: #1A1C23;
+  border-color: rgba(var(--kpi-rgb, 255, 255, 255), 0.6);
+  box-shadow: 0 0 20px rgba(var(--kpi-rgb, 255, 255, 255), 0.15);
+}
+.aulaFunnelRow {
+  display: grid;
+  grid-template-columns: 140px 1fr 50px;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.aulaFunnelLabel {
+  font-size: 11px;
+  color: #9CA3AF;
+  white-space: nowrap;
+}
+.aulaFunnelBarArea {
+  height: 16px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.aulaFunnelBar {
+  height: 100%;
+  border-radius: 8px;
+}
+.aulaFunnelVal {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.aulaFunnelPct {
+  font-size: 9px;
+  color: #6B7280;
+  font-weight: 400;
+}
+
+.aulaMetricItem {
+  margin-bottom: 20px;
+}
+.aulaMetricHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #9CA3AF;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.aulaMetricBarBg {
+  height: 4px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 2px;
+  margin-bottom: 6px;
+}
+.aulaMetricBarFill {
+  height: 100%;
+  border-radius: 2px;
+}
+.aulaMetricSub {
+  font-size: 9px;
+  color: #6B7280;
+}
+.aulaInsightBox {
+  margin-top: 24px;
+  background: rgba(45, 212, 191, 0.05);
+  border: 1px solid rgba(45, 212, 191, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.3s ease;
+}
+
+.aulaInsightBox:hover {
+  transform: translateY(-2px);
+  background: rgba(45, 212, 191, 0.1);
+  border-color: rgba(var(--kpi-rgb, 45, 212, 191), 0.6);
+  box-shadow: 0 0 20px rgba(var(--kpi-rgb, 45, 212, 191), 0.15);
+}
+.aulaInsightTitle {
+  font-size: 10px;
+  font-weight: 700;
+  color: #2DD4BF;
+  margin-bottom: 8px;
+}
+.aulaInsightText {
+  font-size: 12px;
+  color: #9CA3AF;
+  line-height: 1.5;
+}

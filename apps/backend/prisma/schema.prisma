@@ -1,0 +1,199 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Lead {
+  id              String   @id @default(uuid())
+  nome            String
+  email           String   @unique
+  telefone        String?
+  messenger_id    String?
+  status          String   @default("lead") // lead | cliente | inativo
+  segmento_email  String   @default("investigador")
+  fonte_captacao  String?
+  data_cadastro   DateTime @default(now())
+  ultima_interacao DateTime?
+  tags            String[]
+  notas           String?
+  produtos        LeadProduto[]
+  sms_logs        SmsLog[]
+}
+
+model OKR {
+  id          String   @id @default(uuid())
+  periodo     String   // Q1_2026 | mensal
+  objetivo    String
+  area        String
+  criado_em   DateTime @default(now())
+  resultados  ResultadoChave[]
+}
+
+model ResultadoChave {
+  id       String @id @default(uuid())
+  metrica  String
+  meta     Float
+  atual    Float
+  unidade  String
+  status   String @default("no_prazo")
+  okr      OKR    @relation(fields: [okr_id], references: [id])
+  okr_id   String
+}
+
+model ProdutoAfiliado {
+  id              String     @id @default(uuid())
+  nome            String
+  plataforma      String     // ClickBank, BuyGoods, Digistore24
+  nicho           String     // Nutra, Emagrecimento, Skincare
+  comissao_media  Float      // Comissão média esperada (USD)
+  cpa_meta        Float      // CPA alvo máximo (USD)
+  link_afiliado   String?
+  campanhas       Campanha[]
+  vendas          VendaAfiliado[]
+}
+
+model Campanha {
+  id                       String          @id @default(uuid())
+  nome                     String
+  produto_id               String
+  produto                  ProdutoAfiliado @relation(fields: [produto_id], references: [id])
+  inicio                   DateTime
+  fim                      DateTime?
+  investimento_ads_usd     Float           @default(0) // Gasto no Meta/Google
+  faturamento_bruto_usd    Float           @default(0) // Somatório de VendaAfiliado
+  criado_em                DateTime        @default(now())
+  emails                   EmailCampanha[]
+}
+
+model VendaAfiliado {
+  id                  String   @id @default(uuid())
+  transacao_id        String   @unique
+  produto_id          String
+  produto             ProdutoAfiliado @relation(fields: [produto_id], references: [id])
+  valor_comissao_usd  Float
+  tipo_evento         String   // SALE, UPSELL, REFUND
+  email_cliente       String?
+  data_venda          DateTime @default(now())
+}
+
+model EmailCampanha {
+  id           String   @id @default(uuid())
+  assunto      String
+  data_envio   DateTime
+  open_rate    Float?
+  click_rate   Float?
+  insight_ia   String?
+  campanha     Campanha @relation(fields: [campanha_id], references: [id])
+  campanha_id  String
+}
+
+model Funil {
+  id      String  @id @default(uuid())
+  nome    String
+  tipo    String  // newsletter | isca | treinamento | servico | afiliado
+  ativo   Boolean @default(true)
+  etapas  EtapaFunil[]
+}
+
+model EtapaFunil {
+  id               String @id @default(uuid())
+  nome             String
+  meta_conversao   Float
+  conversao_atual  Float  @default(0)
+  quantidade       Int    @default(0)
+  funil            Funil  @relation(fields: [funil_id], references: [id])
+  funil_id         String
+}
+
+model SmsLog {
+  id         String   @id @default(uuid())
+  lead       Lead     @relation(fields: [lead_id], references: [id])
+  lead_id    String
+  mensagem   String
+  status     String   // sent | delivered | failed
+  enviado_em DateTime @default(now())
+}
+
+model LeadProduto {
+  id         String @id @default(uuid())
+  lead       Lead   @relation(fields: [lead_id], references: [id])
+  lead_id    String
+  produto_id String
+}
+
+model Publicacao {
+  id           String   @id @default(uuid())
+  titulo       String
+  conteudo     String
+  plataforma   String   // newsletter | pinterest | instagram | youtube | tiktok
+  data_agenda  DateTime
+  status       String   @default("rascunho") // rascunho | agendado | publicado
+  criado_em    DateTime @default(now())
+}
+
+// ----------------------------------------------------
+// MÓDULO: ADS & AI
+// Modelos responsáveis por receber os dados do n8n
+// ----------------------------------------------------
+
+model AdsCampaign {
+  id            String   @id @default(uuid())
+  nome          String   // ex: "Workshop VDN"
+  plataforma    String   // "facebook" | "google"
+  tipo          String   // "Leads" | "Vendas" | "Aplicacoes"
+  status        String   @default("active")
+  
+  meta_cpl      Float?   // Meta alvo de CPL/CPA para gerar as barras de progresso
+  meta_roas     Float?   // Meta alvo de ROAS
+
+  gasto_total   Float    @default(0)
+  impressoes    Int      @default(0)
+  clicks        Int      @default(0)
+  conversoes    Int      @default(0)
+  receita       Float    @default(0)
+  
+  criado_em     DateTime @default(now())
+  atualizado_em DateTime @updatedAt
+
+  metricas_diarias AdsDailyMetric[]
+  criativos        AdsCreative[]
+}
+
+model AdsDailyMetric {
+  id              String   @id @default(uuid())
+  data            DateTime // A data específica deste registro (ex: "2026-02-24")
+  gasto           Float    @default(0)
+  impressoes      Int      @default(0)
+  alcance         Int      @default(0)
+  clicks          Int      @default(0)
+  leads           Int      @default(0)
+  vendas          Int      @default(0)
+  aplicacoes      Int      @default(0)
+  receita         Float    @default(0)
+
+  campaign        AdsCampaign @relation(fields: [campaign_id], references: [id], onDelete: Cascade)
+  campaign_id     String
+
+  @@unique([campaign_id, data])
+}
+
+model AdsCreative {
+  id              String   @id @default(uuid())
+  nome            String   // ex: "AD 01 - Vídeo"
+  descricao       String?  // ex: "Ebook VDN - FRIO - 25-44 - GERAL"
+  meta_ads_id     String?  // ID do anúncio na Meta para gerar o Deep Link
+
+  gasto           Float    @default(0)
+  impressoes      Int      @default(0)
+  clicks          Int      @default(0)
+  conversoes      Int      @default(0)
+
+  insight_ia      String?  // Texto gerado pela IA ao analisar este criativo
+
+  campaign        AdsCampaign @relation(fields: [campaign_id], references: [id], onDelete: Cascade)
+  campaign_id     String
+}

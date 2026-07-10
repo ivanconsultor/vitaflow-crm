@@ -1,0 +1,202 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.crmLayout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 1024px) {
+  .crmLayout {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.input, .select, .textarea {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--color-ia);
+}
+
+.submitBtn {
+  background-color: var(--color-ia);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+  text-align: center;
+  transition: opacity 0.2s ease;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
+
+/* Table Styles */
+.tableContainer {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.th {
+  color: var(--text-secondary);
+  font-weight: 500;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: rgba(11, 15, 25, 0.5);
+  font-size: 13px;
+}
+
+.td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+.tr:hover {
+  background-color: rgba(31, 41, 55, 0.3);
+}
+
+.leadNameInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.leadName {
+  font-weight: 600;
+}
+
+.leadEmail {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.badgeLead {
+  color: var(--color-kpi);
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.badgeCliente {
+  color: var(--color-success);
+  background-color: rgba(34, 197, 94, 0.1);
+}
+
+.badgeInativo {
+  color: var(--text-muted);
+  background-color: rgba(107, 114, 128, 0.1);
+}
+
+.segmentTag {
+  font-size: 12px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: var(--text-secondary);
+}
+
+.tagList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tagItem {
+  font-size: 11px;
+  background-color: rgba(168, 85, 247, 0.1);
+  color: var(--color-ia);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.deleteBtn {
+  color: var(--color-alert);
+  font-size: 13px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.deleteBtn:hover {
+  opacity: 0.8;
+}
+
+.loading, .errorState {
+  text-align: center;
+  padding: 48px;
+  color: var(--text-secondary);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 32px;
+  color: var(--text-muted);
+}

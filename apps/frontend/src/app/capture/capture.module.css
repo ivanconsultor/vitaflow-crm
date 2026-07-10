@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&display=swap');
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 48px 24px;
+  background-color: #0A0A0A; /* Black Premium */
+  color: #fff;
+}
+
+.hero {
+  text-align: center;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 2rem;
+}
+
+.tagline {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D4AF37; /* Gold Premium */
+  letter-spacing: 2px;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.description {
+  font-size: 16px;
+  color: #A0AEC0;
+  line-height: 1.6;
+}
+
+.storySection {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  max-width: 800px;
+  align-items: center;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  padding-bottom: 48px;
+}
+
+.storyText {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+  font-size: 16px;
+  color: #E2E8F0;
+  line-height: 1.7;
+}
+
+.storyText p {
+  margin: 0;
+}
+
+.storyText strong {
+  color: #D4AF37;
+  font-weight: 700;
+}
+
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.pillarCard {
+  background-color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  transition: transform 0.2s;
+}
+
+.pillarCard:hover {
+  transform: translateY(-4px);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.pillarIcon {
+  color: #D4AF37;
+}
+
+.pillarTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.pillarCard p {
+  font-size: 14px;
+  color: #A0AEC0;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.offerSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.offerTitle {
+  font-size: 32px;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.offerDescription {
+  font-size: 15px;
+  color: #A0AEC0;
+  max-width: 500px;
+  margin-bottom: 24px;
+}
+
+.quizWrapper {
+  width: 100%;
+  max-width: 550px;
+}
+
+.trustBadges {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(212, 175, 55, 0.2); /* Borda Dourada Suave */
+  padding-top: 32px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.badge svg {
+  color: #D4AF37;
+}
+
+/* MISSIONS (Visible on Landing Page) */
+.missionsState {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 600px;
+  margin: 48px auto 0;
+}
+
+.missionsHeader {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.missionsTitle {
+  font-size: 28px;
+  color: #FFFFFF;
+  margin: 0 0 8px 0;
+}
+
+.missionsDesc {
+  font-size: 15px;
+  color: #A0AEC0;
+  margin: 0;
+}
+
+.missionCard {
+  background-color: #111111;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.missionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.missionTag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #D4AF37;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.missionHeader p {
+  color: #FFFFFF;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.emailButtons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.emailBtn {
+  flex: 1;
+  background-color: #1A1A1A;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #D4AF37;
+  text-align: center;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.emailBtn:hover {
+  background-color: rgba(212, 175, 55, 0.1);
+  border-color: #D4AF37;
+}
+
+.smsBtn {
+  background-color: #D4AF37;
+  color: #0A0A0A;
+  text-align: center;
+  padding: 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+
+.smsBtn:hover {
+  opacity: 0.9;
+}
+
+.missionVideoWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #0A0A0A;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}

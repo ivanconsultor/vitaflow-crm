@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 280px;
+  min-width: 0;
+}
+
+.pageContainer {
+  flex: 1;
+  padding: 32px;
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    margin-left: 0;
+  }
+  .pageContainer {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,224 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+.card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* Form Styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.input, .select, .textarea {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+  width: 100%;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--color-ia);
+}
+
+.submitBtn {
+  background-color: var(--color-ia);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+  text-align: center;
+  transition: opacity 0.2s ease;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
+
+/* Grid Editorial */
+.editorialList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pubCard {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  transition: all 0.2s ease;
+}
+
+.pubCard:hover {
+  border-color: var(--border-color-active);
+}
+
+.pubInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.pubHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pubPlatform {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.platNewsletter {
+  color: var(--color-ia);
+  background-color: rgba(168, 85, 247, 0.1);
+}
+
+.platPinterest {
+  color: var(--color-alert);
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.platInstagram {
+  color: #ec4899;
+  background-color: rgba(236, 72, 153, 0.1);
+}
+
+.platYoutube {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+.platTiktok {
+  color: #22d3ee;
+  background-color: rgba(34, 211, 238, 0.1);
+}
+
+.pubDate {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.pubTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.pubContent {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.pubFooter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.statusTag {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+.statusRascunho {
+  color: var(--text-secondary);
+  background-color: rgba(156, 163, 175, 0.1);
+}
+
+.statusAgendado {
+  color: var(--color-kpi);
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.statusPublicado {
+  color: var(--color-success);
+  background-color: rgba(34, 197, 94, 0.1);
+}
+
+.deleteBtn {
+  color: var(--color-alert);
+  font-size: 13px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.deleteBtn:hover {
+  opacity: 0.8;
+}
+
+.loading, .errorState {
+  text-align: center;
+  padding: 48px;
+  color: var(--text-secondary);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 32px;
+  color: var(--text-muted);
+}

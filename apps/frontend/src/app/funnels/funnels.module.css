@@ -1,0 +1,313 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.mainTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.subTitle {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin-top: 4px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid #2A2D43;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.searchInput {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 12px;
+  outline: none;
+  width: 150px;
+}
+
+.btnSecondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #151724;
+  border: 1px solid #2A2D43;
+  color: #E2E8F0;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btnSecondary:hover {
+  background: #1F2235;
+}
+
+.btnPrimary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(217, 70, 239, 0.1);
+  border: 1px solid #D946EF;
+  color: #D946EF;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 0 10px rgba(217, 70, 239, 0.15);
+}
+
+.btnPrimary:hover {
+  background: rgba(217, 70, 239, 0.2);
+  box-shadow: 0 0 15px rgba(217, 70, 239, 0.3);
+}
+
+/* KPIs */
+.kpiRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.kpiCard {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.kpiCard:hover {
+  transform: translateY(-2px);
+  background: #1A1C23;
+  border-color: rgba(var(--kpi-rgb, 139, 92, 246), 0.6);
+  box-shadow: 0 0 20px rgba(var(--kpi-rgb, 139, 92, 246), 0.15);
+}
+
+.kpiIconWrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kpiInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.kpiLabel {
+  font-size: 12px;
+  color: #6B7280;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.kpiValue {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Grid de Funis */
+.funnelGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 24px;
+}
+
+.funnelCard {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cardHeader {
+  padding: 20px;
+  border-bottom: 1px solid #1F2937;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #11141D;
+}
+
+.cardTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.funnelName {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+.funnelTypeBadge {
+  font-size: 10px;
+  color: #8B5CF6;
+  background: rgba(139, 92, 246, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.btnIcon {
+  color: #6B7280;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.btnIcon:hover {
+  color: #fff;
+}
+
+/* Pipeline Flow */
+.pipeline {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pipelineStageWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.pipelineStage {
+  background: #161825;
+  border: 1px solid rgba(var(--theme-rgb, 42, 45, 67), 0.3);
+  border-radius: 8px;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  min-width: 200px;
+  transition: all 0.3s ease;
+}
+
+.pipelineStage:hover {
+  transform: translateY(-2px);
+  background: #1A1C23;
+  border-color: rgba(var(--theme-rgb, 139, 92, 246), 0.6);
+  box-shadow: 0 0 20px rgba(var(--theme-rgb, 139, 92, 246), 0.15);
+}
+
+.stageInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stageName {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--theme-color, #E2E8F0);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stageQty {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.stageConversion {
+  font-size: 12px;
+  font-weight: 600;
+  background: #0B0E14;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid #1F2937;
+}
+
+.arrowDown {
+  margin: 8px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Estados */
+.loading {
+  color: #9CA3AF;
+  font-size: 14px;
+  padding: 40px;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px;
+  color: #6B7280;
+  background: #0B0E14;
+  border: 1px dashed #374151;
+  border-radius: 12px;
+}

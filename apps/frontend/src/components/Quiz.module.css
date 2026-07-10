@@ -1,0 +1,136 @@
+.quizContainer {
+  background-color: #111111;
+  border: 1px solid rgba(212, 175, 55, 0.2); /* Dourado mudo com transparencia */
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 550px;
+  width: 100%;
+  margin: 0 auto;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.stepIndicator {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #D4AF37;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.question {
+  font-size: 20px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.optionsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.optionBtn {
+  background-color: #1A1A1A;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.optionBtn:hover {
+  border-color: #D4AF37;
+  background-color: rgba(212, 175, 55, 0.05);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #A0AEC0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input {
+  background-color: #1A1A1A;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 15px;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #D4AF37;
+}
+
+.submitBtn {
+  background-color: #D4AF37;
+  color: #0A0A0A;
+  font-weight: 800;
+  font-size: 15px;
+  padding: 16px;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
+
+.submitBtn:active {
+  transform: scale(0.98);
+}
+
+.successState {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.successTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #D4AF37;
+  font-family: 'Playfair Display', serif;
+}
+
+.successMsg {
+  font-size: 15px;
+  color: #A0AEC0;
+  line-height: 1.6;
+}
