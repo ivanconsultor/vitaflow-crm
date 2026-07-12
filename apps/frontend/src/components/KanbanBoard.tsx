@@ -47,7 +47,7 @@ export default function KanbanBoard({ leads: initialLeads }: KanbanProps) {
     if (!leadToClose) return;
     
     try {
-      const response = await fetchWithAuth(`http://localhost:3001/api/leads/${leadToClose.id}`, {
+      const response = await fetchWithAuth(`/api/leads/${leadToClose.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"

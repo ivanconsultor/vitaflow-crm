@@ -36,7 +36,7 @@ export default function CrmPage() {
 
   const fetchLeads = async () => {
     try {
-      const res = await fetchWithAuth("http://localhost:3001/api/leads");
+      const res = await fetchWithAuth("/api/leads");
       if (res.ok) {
         const data = await res.json();
         setLeads(data);
@@ -65,7 +65,7 @@ export default function CrmPage() {
       .filter((tag) => tag.length > 0);
 
     try {
-      const res = await fetchWithAuth("http://localhost:3001/api/leads", {
+      const res = await fetchWithAuth("/api/leads", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -102,7 +102,7 @@ export default function CrmPage() {
     if (!confirm("Tem certeza que deseja excluir este lead?")) return;
 
     try {
-      const res = await fetchWithAuth(`http://localhost:3001/api/leads/${id}`, {
+      const res = await fetchWithAuth(`/api/leads/${id}`, {
         method: "DELETE"
       });
 
@@ -119,7 +119,7 @@ export default function CrmPage() {
   const handleSync = async () => {
     setSyncing(true);
     try {
-      const res = await fetchWithAuth("http://localhost:3001/api/systemeio/sync", {
+      const res = await fetchWithAuth("/api/systemeio/sync", {
         method: "POST"
       });
       if (res.ok) {

@@ -16,7 +16,7 @@ export default function Header() {
   useEffect(() => {
     const fetchHealth = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/health");
+        const res = await fetch("/api/health");
         if (res.ok) {
           const data = await res.json();
           setHealth(data);

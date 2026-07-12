@@ -23,7 +23,7 @@ export default function ProspectosPage() {
   useEffect(() => {
     const fetchLeads = async () => {
       try {
-        const response = await fetchWithAuth("http://localhost:3001/api/leads");
+        const response = await fetchWithAuth("/api/leads");
         if (!response.ok) {
           throw new Error("Falha ao obter leads");
         }

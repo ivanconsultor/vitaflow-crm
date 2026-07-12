@@ -40,7 +40,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const fetchOkrs = async () => {
       try {
-        const res = await fetchWithAuth("http://localhost:3001/api/okrs");
+        const res = await fetchWithAuth("/api/okrs");
         if (res.ok) {
           const data = await res.json();
           setOkrs(data);

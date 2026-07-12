@@ -30,7 +30,7 @@ export default function Quiz() {
 
     setSubmitting(true);
     try {
-      const res = await fetch("http://localhost:3001/api/quiz/submit", {
+      const res = await fetch("/api/quiz/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

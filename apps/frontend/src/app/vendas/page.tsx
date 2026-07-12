@@ -22,7 +22,7 @@ export default function VendasDashboard() {
       const fetchInsights = async () => {
         setIsLoadingInsights(true);
         try {
-          const res = await fetchWithAuth("http://localhost:3001/api/vendas/insights");
+          const res = await fetchWithAuth("/api/vendas/insights");
           const data = await res.json();
           if (data.success) {
             setCvsInsights(data.insights);

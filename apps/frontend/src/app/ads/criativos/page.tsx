@@ -54,7 +54,7 @@ export default function CriativosPage() {
     setLaunchStatus(null);
 
     try {
-      const response = await fetch("http://localhost:3001/api/ads/generate", {
+      const response = await fetch("/api/ads/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ produto, nicho, avatar, plataforma })
@@ -78,7 +78,7 @@ export default function CriativosPage() {
     setLaunchStatus(null);
 
     try {
-      const response = await fetch("http://localhost:3001/api/ads/launch", {
+      const response = await fetch("/api/ads/launch", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

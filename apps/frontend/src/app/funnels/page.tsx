@@ -32,7 +32,7 @@ export default function FunnelsPage() {
 
   const fetchFunnels = async () => {
     try {
-      const res = await fetchWithAuth("http://localhost:3001/api/funnels");
+      const res = await fetchWithAuth("/api/funnels");
       if (res.ok) {
         const data = await res.json();
         setFunnels(data);

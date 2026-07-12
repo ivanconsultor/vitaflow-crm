@@ -28,7 +28,7 @@ export default function AdsAnalyticsPage() {
   useEffect(() => {
     const fetchCampaigns = async () => {
       try {
-        const res = await fetch("http://localhost:3001/api/ads/campaigns");
+        const res = await fetch("/api/ads/campaigns");
         if (res.ok) {
           const data = await res.json();
           setCampaigns(data);

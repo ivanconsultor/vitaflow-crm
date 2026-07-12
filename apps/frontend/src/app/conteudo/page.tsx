@@ -28,7 +28,7 @@ export default function ConteudoPage() {
 
   const fetchPublicacoes = async () => {
     try {
-      const res = await fetchWithAuth("http://localhost:3001/api/content/publicacoes");
+      const res = await fetchWithAuth("/api/content/publicacoes");
       if (res.ok) {
         const data = await res.json();
         setPublicacoes(data);
@@ -52,7 +52,7 @@ export default function ConteudoPage() {
 
     setSubmitting(true);
     try {
-      const res = await fetchWithAuth("http://localhost:3001/api/content/pipeline", {
+      const res = await fetchWithAuth("/api/content/pipeline", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ newsletterText })

@@ -24,7 +24,8 @@ export default fp(async (fastify) => {
     await prisma.$queryRaw`SELECT 1`;
     dbConnected = true;
     fastify.log.info("Conexao com o banco de dados PostgreSQL estabelecida com sucesso.");
-  } catch (_error) {
+  } catch (error) {
+    fastify.log.error(error, "Erro ao conectar ao banco via Prisma");
     fastify.log.warn("Nao foi possivel conectar ao PostgreSQL via Prisma. Utilizando mocks em memoria (Fallback).");
   }
 

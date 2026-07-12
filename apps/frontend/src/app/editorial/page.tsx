@@ -33,7 +33,7 @@ export default function EditorialPage() {
 
   const fetchPublicacoes = async () => {
     try {
-      const res = await fetchWithAuth("http://localhost:3001/api/editorial");
+      const res = await fetchWithAuth("/api/editorial");
       if (res.ok) {
         const data = await res.json();
         setPublicacoes(data);
@@ -57,7 +57,7 @@ export default function EditorialPage() {
 
     setSubmitting(true);
     try {
-      const res = await fetchWithAuth("http://localhost:3001/api/editorial", {
+      const res = await fetchWithAuth("/api/editorial", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -91,7 +91,7 @@ export default function EditorialPage() {
     if (!confirm("Tem certeza que deseja excluir esta publicacao?")) return;
 
     try {
-      const res = await fetchWithAuth(`http://localhost:3001/api/editorial/${id}`, {
+      const res = await fetchWithAuth(`/api/editorial/${id}`, {
         method: "DELETE"
       });
 

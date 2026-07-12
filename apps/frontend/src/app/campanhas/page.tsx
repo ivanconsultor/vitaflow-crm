@@ -35,7 +35,7 @@ export default function CampanhasPage() {
 
   const fetchCampanhas = async () => {
     try {
-      const res = await fetchWithAuth("http://localhost:3001/api/campaigns");
+      const res = await fetchWithAuth("/api/campaigns");
       if (res.ok) {
         const data = await res.json();
         setCampanhas(data);
@@ -56,7 +56,7 @@ export default function CampanhasPage() {
     setSubmitting(true);
 
     try {
-      const res = await fetchWithAuth("http://localhost:3001/api/campaigns", {
+      const res = await fetchWithAuth("/api/campaigns", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

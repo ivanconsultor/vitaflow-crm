@@ -14,7 +14,7 @@ export default function AnalyticsPage() {
   useEffect(() => {
     const fetchAnalytics = async () => {
       try {
-        const res = await fetchWithAuth("http://localhost:3001/api/analytics");
+        const res = await fetchWithAuth("/api/analytics");
         if (res.ok) {
           const json = await res.json();
           setData(json);

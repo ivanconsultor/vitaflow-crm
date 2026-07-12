@@ -25,6 +25,52 @@ services:
     networks:
       - public
 
+  backend_vitaflow:
+    build:
+      context: ./apps/backend
+      dockerfile: Dockerfile
+    container_name: backend_vitaflow
+    restart: always
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=postgresql://user:password@postgres_vitaflow:5432/metodo4cs?schema=public
+      - REDIS_URL=redis://redis_vitaflow:6379
+      - PORT=3001
+      - NODE_ENV=development
+    volumes:
+      - ./apps/backend:/app
+      - /app/node_modules
+      - ./.env:/.env
+    networks:
+      - public
+    depends_on:
+      - postgres_vitaflow
+      - redis_vitaflow
+
+  frontend_vitaflow:
+    build:
+      context: ./apps/frontend
+      dockerfile: Dockerfile
+    container_name: frontend_vitaflow
+    restart: always
+    ports:
+      - "3005:3005"
+    environment:
+      - WATCHPACK_POLLING=true
+      - BACKEND_HOST=backend_vitaflow
+      - NEXT_PUBLIC_API_URL=http://backend_vitaflow:3001
+    volumes:
+      - ./apps/frontend:/app
+      - /app/node_modules
+      - /app/.next
+    networks:
+      - public
+    depends_on:
+      - backend_vitaflow
+
 volumes:
   postgres_vitaflow_data:
 
