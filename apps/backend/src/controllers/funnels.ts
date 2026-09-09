@@ -92,7 +92,9 @@ export const getAllFunnels = (fastify: FastifyInstance) => async (
         include: { etapas: true },
         orderBy: { nome: "asc" }
       });
-      return reply.send(funnels);
+      if (funnels && funnels.length > 0) {
+        return reply.send(funnels);
+      }
     } catch (error) {
       fastify.log.error(error);
     }
