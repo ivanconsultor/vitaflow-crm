@@ -21,17 +21,6 @@ export default function C4Page() {
         <div className={styles.shortcutsCol}>
           <h2 className={styles.sectionTitle}>Acesso Rápido</h2>
           
-          <Link href="/vendas" className={`${styles.megaCard}`} style={{ '--kpi-rgb': '245, 158, 11' } as React.CSSProperties}>
-            <div className={styles.megaCardIcon} style={{ color: '#F59E0B', background: 'rgba(245, 158, 11, 0.1)' }}>
-              <DollarSign size={24} />
-            </div>
-            <div className={styles.megaCardContent}>
-              <h3>Dashboard CVS Financeiro</h3>
-              <p>Faturamento, comissões, gateways e ROI.</p>
-            </div>
-            <ArrowRight size={20} className={styles.arrow} />
-          </Link>
-
           <Link href="/kambam-vendas" className={`${styles.megaCard}`} style={{ '--kpi-rgb': '245, 158, 11' } as React.CSSProperties}>
             <div className={styles.megaCardIcon} style={{ color: '#F59E0B', background: 'rgba(245, 158, 11, 0.1)' }}>
               <Briefcase size={24} />
@@ -42,14 +31,25 @@ export default function C4Page() {
             </div>
             <ArrowRight size={20} className={styles.arrow} />
           </Link>
-          
+
           <Link href="/funnels" className={`${styles.megaCard}`} style={{ '--kpi-rgb': '245, 158, 11' } as React.CSSProperties}>
             <div className={styles.megaCardIcon} style={{ color: '#F59E0B', background: 'rgba(245, 158, 11, 0.1)' }}>
               <Target size={24} />
             </div>
             <div className={styles.megaCardContent}>
-              <h3>Mapeamento de Funis</h3>
+              <h3>Funil</h3>
               <p>Visualização das etapas de conversão e gargalos.</p>
+            </div>
+            <ArrowRight size={20} className={styles.arrow} />
+          </Link>
+
+          <Link href="/vendas" className={`${styles.megaCard}`} style={{ '--kpi-rgb': '245, 158, 11' } as React.CSSProperties}>
+            <div className={styles.megaCardIcon} style={{ color: '#F59E0B', background: 'rgba(245, 158, 11, 0.1)' }}>
+              <DollarSign size={24} />
+            </div>
+            <div className={styles.megaCardContent}>
+              <h3>Vendas</h3>
+              <p>Faturamento, comissões, gateways e ROI.</p>
             </div>
             <ArrowRight size={20} className={styles.arrow} />
           </Link>

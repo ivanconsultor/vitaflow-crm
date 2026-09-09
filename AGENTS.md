@@ -83,6 +83,32 @@ Regras praticas:
 
 > `body { overflow-x: hidden }` em `globals.css` continua la como rede de seguranca. Ele **esconde** estouro, nao corrige — por isso a medicao do item 6 ignora essa protecao.
 
+### 3.1.1 Estado atual (verificado em 09/09/2026)
+
+O padrão responsivo acima **está implementado e no ar**. Entregue no commit `7d56986`:
+
+- 33 arquivos alterados, +1959 linhas.
+- 42 blocos `@media` novos, distribuídos pelos `*.module.css` de todas as telas (c1 a c4, ads, analytics, campanhas, capture, conteudo, crm, editorial, funnels, integracoes, kambam-vendas, login, newsletter, prospectos, vendas) e pelos componentes (`Header`, `Sidebar`, `KanbanBoard`, `Quiz`).
+- `Header.tsx` ganhou o botão hamburguer que abre a sidebar como gaveta, com backdrop.
+
+**Medição feita** (critério do item 6), na tela `/c4` com o servidor de desenvolvimento:
+
+| Viewport | Estouros reais | `scrollWidth` |
+|---|---|---|
+| 375px (celular) | 0 | 375 |
+| 768px (tablet) | 0 | 768 |
+| 1440px (desktop) | 0 | 1434 |
+
+"Estouro real" = elemento cujo `getBoundingClientRect().right` passa da largura da viewport e que **não** está dentro de um container com `overflow-x` de rolagem. A sidebar fechada aparece fora da tela pela esquerda por construção (é a gaveta recolhida) e não conta como estouro.
+
+### 3.1.2 Nomes e ordem dos atalhos das telas-hub
+
+Nas telas de módulo (C1 a C4), os cartões de "Acesso Rápido" **devem repetir o rótulo e a ordem do submenu correspondente em `src/config/menu.ts`**. O menu é a fonte da verdade; o cartão acompanha.
+
+- Só o `<h3>` do cartão segue o menu. O subtítulo `<p>` continua descritivo e livre.
+- Ao renomear um item em `menu.ts`, conferir os cartões da tela-hub daquele módulo.
+- Exemplo aplicado em `/c4` (09/09/2026): os cartões passaram a ser **Kanban Vendas → Funil → Vendas**, iguais ao submenu C4. Antes eram "Dashboard CVS Financeiro", "Kanban Vendas" e "Mapeamento de Funis", fora de ordem. As rotas não mudaram.
+
 > As telas C1, C2, C3 e C4 compartilham **um unico arquivo**: `src/app/c1/page.module.css`. Mexer nele altera as quatro. Os arquivos `c2/`, `c3/` e `c4/page.module.css` existem mas nao sao importados por ninguem.
 
 ---
