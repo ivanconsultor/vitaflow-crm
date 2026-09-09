@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { submitQuiz } from "../controllers/quiz";
 import { v4 as uuidv4 } from "uuid";
 import { mockLeads } from "../controllers/leads";
+import * as crypto from "node:crypto";
 
 async function dispararSmsRecuperacao(
   fastify: any,
@@ -182,14 +183,49 @@ export default async function (fastify: FastifyInstance) {
 
   // Webhook disparado pela ClickBank (INS)
   fastify.post("/api/webhooks/clickbank", async (request, reply) => {
-    // GSD Webhook Security: Validação de Token de API
-    const webhookToken = request.headers["x-clickbank-token"];
-    if (webhookToken !== fastify.config.WEBHOOK_SECRET_CLICKBANK) {
-      fastify.log.warn(`Tentativa de acesso não autorizado ao Webhook da ClickBank.`);
-      return reply.status(401).send({ error: "Unauthorized." });
+    let data = request.body as any;
+
+    // ClickBank INS chega CRIPTOGRAFADO ({notification, iv}). Se vier assim, abrimos com a Secret Key.
+    if (data && data.notification && data.iv) {
+      const secretKey = fastify.config.CLICKBANK_SECRET_KEY;
+      if (!secretKey) {
+        fastify.log.error("CLICKBANK_SECRET_KEY nao configurada; impossivel abrir INS.");
+        return reply.status(500).send({ error: "ClickBank secret not configured." });
+      }
+      try {
+        const sha1 = crypto.createHash("sha1").update(secretKey, "utf8").digest("hex");
+        const key = Buffer.from(sha1.substring(0, 32), "utf8");
+        const iv = Buffer.from(data.iv, "base64");
+        const decipher = crypto.createDecipheriv("aes-256-cbc", key, iv);
+        const dec = Buffer.concat([decipher.update(Buffer.from(data.notification, "base64")), decipher.final()]);
+        const p = JSON.parse(dec.toString("utf8"));
+        // Traduz o formato do ClickBank para o formato plano que o resto do codigo ja usa.
+        data = {
+          receipt: p.receipt,
+          transactionType: p.transactionType,
+          totalOrderAmount: p.totalOrderAmount ?? p.totalAccountAmount ?? 0,
+          customer: {
+            email: p.customer?.billing?.email ?? null,
+            firstName: p.customer?.billing?.firstName ?? "Cliente",
+            phone: p.customer?.billing?.phoneNumber ?? null,
+          },
+        };
+        fastify.log.info("Payload ClickBank INS aberto com sucesso.");
+      } catch (err) {
+        fastify.log.warn(err, "Falha ao abrir INS do ClickBank (chave errada?).");
+        return reply.status(401).send({ error: "Invalid ClickBank signature." });
+      }
+    } else {
+      // Caminho nao-criptografado: so aceita se houver um token de API configurado E que bata.
+      // Sem token configurado, recusa (o ClickBank real sempre manda criptografado {notification,iv}).
+      const webhookToken = request.headers["x-clickbank-token"];
+      const expectedToken = fastify.config.WEBHOOK_SECRET_CLICKBANK;
+      if (!expectedToken || webhookToken !== expectedToken) {
+        fastify.log.warn(`Tentativa de acesso nao autorizado ao Webhook da ClickBank (payload nao criptografado).`);
+        return reply.status(401).send({ error: "Unauthorized." });
+      }
     }
 
-    const data = request.body as any;
     fastify.log.info(`Recebido webhook da ClickBank. Tipo de transacao: ${data.transactionType}`);
 
     const transacaoId = data.receipt || uuidv4().substring(0, 8).toUpperCase();

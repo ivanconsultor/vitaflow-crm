@@ -6,3 +6,6 @@ out
 build
 *.log
 .tmp
+*.tsbuildinfo
+Code_Generated_Image.png
+docker-compose*.yml

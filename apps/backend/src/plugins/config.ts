@@ -20,6 +20,7 @@ const schema = {
     TWILIO_FROM_NUMBER: { type: "string" },
     SYSTEMEIO_API_KEY: { type: "string" },
     WEBHOOK_SECRET_CLICKBANK: { type: "string" },
+    CLICKBANK_SECRET_KEY: { type: "string" },
     WEBHOOK_SECRET_BUYGOODS: { type: "string" },
     WEBHOOK_SECRET_DIGISTORE: { type: "string" },
     WEBHOOK_SECRET_MAXWEB: { type: "string" },
@@ -51,6 +52,7 @@ declare module "fastify" {
       TWILIO_FROM_NUMBER: string;
       SYSTEMEIO_API_KEY: string;
       WEBHOOK_SECRET_CLICKBANK: string;
+      CLICKBANK_SECRET_KEY: string;
       WEBHOOK_SECRET_BUYGOODS: string;
       WEBHOOK_SECRET_DIGISTORE: string;
       WEBHOOK_SECRET_MAXWEB: string;
