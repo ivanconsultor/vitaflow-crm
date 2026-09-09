@@ -22,7 +22,7 @@ export default function C1Page() {
           <Link href="/" className={styles.megaCard} style={{ '--kpi-rgb': '168, 85, 247' } as React.CSSProperties}>
             <div className={styles.megaCardIcon} style={{ color: '#A855F7', background: 'rgba(168, 85, 247, 0.1)' }}><Target size={22} /></div>
             <div className={styles.megaCardContent}>
-              <h3>OKR VFlow</h3>
+              <h3>OKR</h3>
               <p>Metas estratégicas, OKRs e resultados-chave da empresa.</p>
             </div>
             <ArrowRight size={18} className={styles.arrow} />

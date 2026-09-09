@@ -2,14 +2,16 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
 import styles from "./Header.module.css";
+import { getPageInfo } from "../config/menu";
 
 interface HealthStatus {
   status: string;
   database: string;
 }
 
-export default function Header() {
+export default function Header({ onMenuClick }: { onMenuClick?: () => void }) {
   const pathname = usePathname();
   const [health, setHealth] = useState<HealthStatus | null>(null);
 
@@ -33,26 +35,23 @@ export default function Header() {
     return () => clearInterval(interval);
   }, []);
 
-  const getPageTitle = () => {
-    switch (pathname) {
-      case "/":
-        return { title: "Dashboard Geral", subtitle: "Gestao de metas e OKRs do negocio" };
-      case "/crm":
-        return { title: "CRM Leads", subtitle: "Modulo 1 - Captacao e gestao de leads (C1)" };
-      case "/funnels":
-        return { title: "FuNews", subtitle: "Modulo 4 - Mapa visual e conversao de funis (C4)" };
-      default:
-        return { title: "Sistema", subtitle: "Metodo 4Cs com IA" };
-    }
-  };
-
-  const pageInfo = getPageTitle();
+  // O titulo vem do menu (config/menu.ts): tela nova no menu ja aparece aqui.
+  const pageInfo = getPageInfo(pathname);
 
   return (
     <header className={styles.header}>
-      <div className={styles.titleSection}>
-        <h1 className={styles.title}>{pageInfo.title}</h1>
-        <span className={styles.subtitle}>{pageInfo.subtitle}</span>
+      <div className={styles.leftSection}>
+        <button
+          className={styles.menuButton}
+          onClick={onMenuClick}
+          aria-label="Abrir menu"
+        >
+          <Menu size={24} />
+        </button>
+        <div className={styles.titleSection}>
+          <h1 className={styles.title}>{pageInfo.title}</h1>
+          <span className={styles.subtitle}>{pageInfo.subtitle}</span>
+        </div>
       </div>
 
       <div className={styles.statusSection}>

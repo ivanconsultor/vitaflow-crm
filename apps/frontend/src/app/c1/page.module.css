@@ -4,6 +4,10 @@
   padding: 40px;
   min-height: calc(100vh - 64px);
   width: 100%;
+  /* Coluna unica: sem esse teto os cards de atalho esticavam e ficavam vazios
+     no monitor grande. Abaixo de 1040px o comportamento e o mesmo de antes. */
+  max-width: 1040px;
+  margin: 0 auto;
   animation: fadeIn 0.3s ease-out;
 }
 
@@ -46,8 +50,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
+  grid-template-columns: 1fr;
+  gap: 32px;
 }
 
 .shortcutsCol {
@@ -192,4 +196,61 @@
   font-size: 14px;
   font-weight: 600;
   color: #E2E8F0;
+}
+
+/* ===== Responsivo: tablet (o resumo desce para baixo dos atalhos) ===== */
+@media (max-width: 1024px) {
+  .hubContainer {
+    padding: 24px;
+    min-height: 0;
+  }
+  .hubHeader {
+    margin-bottom: 28px;
+  }
+  .grid {
+    gap: 28px;
+  }
+  .title {
+    font-size: 34px;
+  }
+}
+
+/* ===== Responsivo: celular ===== */
+@media (max-width: 768px) {
+  .hubContainer {
+    padding: 4px 0 24px;
+  }
+  .hubHeader {
+    margin-bottom: 24px;
+  }
+  .grid {
+    gap: 24px;
+  }
+  .title {
+    font-size: 28px;
+    letter-spacing: -0.5px;
+  }
+  .subtitle {
+    font-size: 14px;
+  }
+  .megaCard {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .megaCardIcon {
+    width: 38px;
+    height: 38px;
+  }
+  .megaCardContent h3 {
+    font-size: 15px;
+  }
+  .megaCardContent p {
+    font-size: 12px;
+  }
+  .reportWidget {
+    padding: 20px;
+  }
+  .reportHeader {
+    margin-bottom: 20px;
+  }
 }

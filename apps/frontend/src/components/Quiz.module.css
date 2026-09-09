@@ -134,3 +134,17 @@
   color: #A0AEC0;
   line-height: 1.6;
 }
+
+/* ===== Responsivo: celular ===== */
+@media (max-width: 768px) {
+  .quizContainer {
+    padding: 22px 18px;
+    min-height: 0;
+  }
+  .question {
+    font-size: 17px;
+  }
+  .optionBtn {
+    padding: 14px;
+  }
+}

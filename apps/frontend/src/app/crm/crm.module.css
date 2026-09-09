@@ -10,12 +10,6 @@
   gap: 28px;
 }
 
-@media (min-width: 1024px) {
-  .crmLayout {
-    grid-template-columns: 320px 1fr;
-  }
-}
-
 .card {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -24,6 +18,9 @@
   box-shadow: var(--glass-shadow);
   border-radius: 12px;
   padding: 24px;
+  /* Item de grid: sem isso a tabela larga estica a coluna e a pagina
+     inteira passa a rolar de lado no celular e no tablet. */
+  min-width: 0;
 }
 
 .cardTitle {
@@ -81,6 +78,30 @@
 }
 
 .submitBtn:hover {
+  opacity: 0.9;
+}
+
+.tableHeaderBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.syncBtn {
+  background-color: #3b82f6;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.syncBtn:hover {
   opacity: 0.9;
 }
 
@@ -199,4 +220,54 @@
   text-align: center;
   padding: 32px;
   color: var(--text-muted);
+}
+
+/* ===== Responsivo: tablet ===== */
+@media (max-width: 1024px) {
+  .card {
+    padding: 20px;
+  }
+}
+
+/* ===== Responsivo: celular ===== */
+@media (max-width: 768px) {
+  .container {
+    gap: 20px;
+  }
+  .crmLayout {
+    gap: 20px;
+  }
+  .card {
+    padding: 16px;
+  }
+  .cardTitle {
+    margin-bottom: 14px;
+    font-size: 15px;
+  }
+  .tableHeaderBar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 1.25rem;
+  }
+  .syncBtn {
+    width: 100%;
+    text-align: center;
+    padding: 10px 14px;
+  }
+  .input, .select, .textarea {
+    font-size: 16px; /* evita auto-zoom no iOS Safari */
+    padding: 10px;
+  }
+  .tableContainer {
+    -webkit-overflow-scrolling: touch;
+  }
+  .th,
+  .td {
+    padding: 10px 12px;
+    white-space: nowrap;
+  }
+  .leadNameInfo {
+    white-space: normal;
+  }
 }

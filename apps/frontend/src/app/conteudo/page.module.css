@@ -23,7 +23,7 @@
 
 .layout {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
   gap: 2rem;
   align-items: start;
 }
@@ -176,9 +176,6 @@
 }
 
 @media (max-width: 1024px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
   .gridList {
     grid-template-columns: 1fr;
   }

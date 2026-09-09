@@ -52,7 +52,7 @@ export default function AdsAnalyticsPage() {
     <div className={styles.container}>
       {/* Header */}
       <div className={styles.header}>
-        <h1 className={styles.title}>VFlow — <span className={styles.titleHighlight}>ADS Analytics</span></h1>
+        <h1 className={styles.title}>Ads Analytics</h1>
         
         <div className={styles.headerFilters}>
           <Link href="/ads/criativos" className={styles.dateBtn} style={{textDecoration: 'none'}}>Criativos &gt;</Link>
@@ -383,7 +383,7 @@ export default function AdsAnalyticsPage() {
         </div>
         
         {isDetalhesOpen && (
-          <div style={{ padding: '20px' }}>
+          <div className={styles.dailyContent}>
             <div className={styles.dailyFilter}>
               Filtrar por campanha: <strong style={{ color: '#fff', cursor: 'pointer' }}>Todas as Campanhas ▾</strong>
             </div>

@@ -162,6 +162,17 @@ export default function VendasDashboard() {
     setIsModalOpen(false);
   };
 
+  const handleOpenCampaignById = (id: number) => {
+    for (const grupo of campanhasData) {
+      const match = grupo.itens.find(it => it.id === id);
+      if (match) {
+        setEditingItem({ grupoKey: grupo.key, ...match });
+        setIsModalOpen(true);
+        return;
+      }
+    }
+  };
+
   // ── LÓGICA REATIVA (MOCK) DE AFILIADOS ──
   const metricasSimuladas = React.useMemo(() => {
     // Valores Base (ClickBank)
@@ -679,96 +690,166 @@ export default function VendasDashboard() {
         ═══════════════════════════════════════════════ */}
         {activeTab === "calendario" && (
           <div className={styles.calendarTabContainer}>
-            <div className={styles.calendarHeaderRow}>
-              <div className={styles.calendarDayHeader}>SEG</div>
-              <div className={styles.calendarDayHeader}>TER</div>
-              <div className={styles.calendarDayHeader}>QUA</div>
-              <div className={styles.calendarDayHeader}>QUI</div>
-              <div className={styles.calendarDayHeader}>SEX</div>
-              <div className={styles.calendarDayHeader}>SÁB</div>
-              <div className={styles.calendarDayHeader}>DOM</div>
+            <div className={styles.calendarMobileHint}>
+              <span>↔ Deslize lateralmente para visualizar a semana completa</span>
             </div>
-            <div className={styles.calendarGrid}>
-              <div className={styles.calendarRow}>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarBar} style={{left: '5%', width: '90%', background: '#6366F1'}}>
-                  <span role="img" aria-label="course" style={{marginRight: 6}}>📘</span> Curso VFlow
+
+            <div className={styles.calendarScrollArea}>
+              <div className={styles.calendarInner}>
+                <div className={styles.calendarHeaderRow}>
+                  <div className={styles.calendarDayHeader}>SEG</div>
+                  <div className={styles.calendarDayHeader}>TER</div>
+                  <div className={styles.calendarDayHeader}>QUA</div>
+                  <div className={styles.calendarDayHeader}>QUI</div>
+                  <div className={styles.calendarDayHeader}>SEX</div>
+                  <div className={styles.calendarDayHeader}>SÁB</div>
+                  <div className={styles.calendarDayHeader}>DOM</div>
                 </div>
-              </div>
-              <div className={styles.calendarRow}>
-                <div className={styles.calendarCell}>14</div>
-                <div className={styles.calendarCell}>15</div>
-                <div className={styles.calendarCell}>16</div>
-                <div className={styles.calendarCell}>17</div>
-                <div className={styles.calendarCell}>18</div>
-                <div className={styles.calendarCell}>19</div>
-                <div className={styles.calendarCell}>20</div>
-                <div className={styles.calendarBar} style={{left: '15%', width: '40%', background: '#2DD4BF'}}>
-                  <span role="img" aria-label="course" style={{marginRight: 6}}>📗</span> Workshop VFlow
-                </div>
-              </div>
-              <div className={styles.calendarRow}>
-                <div className={styles.calendarCell}>21</div>
-                <div className={styles.calendarCell}>22</div>
-                <div className={styles.calendarCell}>23</div>
-                <div className={styles.calendarCell}>24</div>
-                <div className={styles.calendarCell}>25</div>
-                <div className={styles.calendarCell}>26</div>
-                <div className={styles.calendarCell}>27</div>
-                <div className={styles.calendarBar} style={{left: '80%', width: '15%', background: '#14B8A6'}}>
-                  <span role="img" aria-label="course" style={{marginRight: 6}}>💎</span> Grupo de Implementação VFlow
-                </div>
-                <div className={styles.calendarBar} style={{left: '0%', width: '30%', background: '#2DD4BF', top: 38}}>
-                  Workshop VFlow
-                </div>
-              </div>
-              <div className={styles.calendarRow}>
-                <div className={styles.calendarCell}>28</div>
-                <div className={styles.calendarCell}>29</div>
-                <div className={styles.calendarCell}>30</div>
-                <div className={styles.calendarCell}>31</div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarBar} style={{left: '0%', width: '100%', background: '#14B8A6'}}>
-                  <span role="img" aria-label="course" style={{marginRight: 6}}>💎</span> Grupo de Implementação VFlow
-                </div>
-              </div>
-              <div className={styles.calendarRow}>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarCell}></div>
-                <div className={styles.calendarBar} style={{left: '0%', width: '50%', background: '#14B8A6'}}>
-                  <span role="img" aria-label="course" style={{marginRight: 6}}>💎</span> Grupo de Implementação VFlow
-                </div>
-                <div className={styles.calendarBar} style={{left: '52%', width: '40%', background: '#EC4899', top: 38}}>
-                  <span role="img" aria-label="course" style={{marginRight: 6}}>🚀</span> Mastermind Heroes
+                <div className={styles.calendarGrid}>
+                  <div className={styles.calendarRow}>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div
+                      className={styles.calendarBar}
+                      style={{left: '5%', width: '90%', background: '#6366F1'}}
+                      title="Curso VFlow (Clique para detalhes)"
+                      onClick={() => handleOpenCampaignById(3)}
+                    >
+                      <span role="img" aria-label="course" style={{marginRight: 6}}>📘</span> Curso VFlow
+                    </div>
+                  </div>
+                  <div className={styles.calendarRow}>
+                    <div className={styles.calendarCell}>14</div>
+                    <div className={styles.calendarCell}>15</div>
+                    <div className={styles.calendarCell}>16</div>
+                    <div className={styles.calendarCell}>17</div>
+                    <div className={styles.calendarCell}>18</div>
+                    <div className={styles.calendarCell}>19</div>
+                    <div className={styles.calendarCell}>20</div>
+                    <div
+                      className={styles.calendarBar}
+                      style={{left: '15%', width: '40%', background: '#2DD4BF'}}
+                      title="Workshop VFlow (Clique para detalhes)"
+                      onClick={() => handleOpenCampaignById(1)}
+                    >
+                      <span role="img" aria-label="course" style={{marginRight: 6}}>📗</span> Workshop VFlow
+                    </div>
+                  </div>
+                  <div className={styles.calendarRow}>
+                    <div className={styles.calendarCell}>21</div>
+                    <div className={styles.calendarCell}>22</div>
+                    <div className={styles.calendarCell}>23</div>
+                    <div className={styles.calendarCell}>24</div>
+                    <div className={styles.calendarCell}>25</div>
+                    <div className={styles.calendarCell}>26</div>
+                    <div className={styles.calendarCell}>27</div>
+                    <div
+                      className={styles.calendarBar}
+                      style={{left: '80%', width: '15%', background: '#14B8A6'}}
+                      title="Grupo de Implementação VFlow (Clique para detalhes)"
+                      onClick={() => handleOpenCampaignById(2)}
+                    >
+                      <span role="img" aria-label="course" style={{marginRight: 6}}>💎</span> Grupo VFlow
+                    </div>
+                    <div
+                      className={styles.calendarBar}
+                      style={{left: '0%', width: '30%', background: '#2DD4BF', top: 38}}
+                      title="Workshop VFlow (Clique para detalhes)"
+                      onClick={() => handleOpenCampaignById(4)}
+                    >
+                      Workshop VFlow
+                    </div>
+                  </div>
+                  <div className={styles.calendarRow}>
+                    <div className={styles.calendarCell}>28</div>
+                    <div className={styles.calendarCell}>29</div>
+                    <div className={styles.calendarCell}>30</div>
+                    <div className={styles.calendarCell}>31</div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div
+                      className={styles.calendarBar}
+                      style={{left: '0%', width: '100%', background: '#14B8A6'}}
+                      title="Grupo de Implementação VFlow (Clique para detalhes)"
+                      onClick={() => handleOpenCampaignById(5)}
+                    >
+                      <span role="img" aria-label="course" style={{marginRight: 6}}>💎</span> Grupo de Implementação VFlow
+                    </div>
+                  </div>
+                  <div className={styles.calendarRow}>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div className={styles.calendarCell}></div>
+                    <div
+                      className={styles.calendarBar}
+                      style={{left: '0%', width: '50%', background: '#14B8A6'}}
+                      title="Grupo de Implementação VFlow (Clique para detalhes)"
+                      onClick={() => handleOpenCampaignById(2)}
+                    >
+                      <span role="img" aria-label="course" style={{marginRight: 6}}>💎</span> Grupo de Implementação VFlow
+                    </div>
+                    <div
+                      className={styles.calendarBar}
+                      style={{left: '52%', width: '40%', background: '#EC4899', top: 38}}
+                      title="Mastermind Heroes (Clique para detalhes)"
+                      onClick={() => handleOpenCampaignById(6)}
+                    >
+                      <span role="img" aria-label="course" style={{marginRight: 6}}>🚀</span> Mastermind Heroes
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
             
-            <div className={styles.calendarLegendRow}>
-              <div style={{display: 'flex', gap: 12}}>
-                <div style={{display: 'flex', alignItems: 'center', gap: 4}}><div style={{width: 8, height: 8, background: '#2DD4BF'}}></div> Workshop VFlow</div>
-                <div style={{display: 'flex', alignItems: 'center', gap: 4}}><div style={{width: 8, height: 8, background: '#6366F1'}}></div> Curso VFlow</div>
-                <div style={{display: 'flex', alignItems: 'center', gap: 4}}><div style={{width: 8, height: 8, background: '#8B5CF6'}}></div> Mentoria</div>
-                <div style={{display: 'flex', alignItems: 'center', gap: 4}}><div style={{width: 8, height: 8, background: '#EC4899'}}></div> Heroes</div>
-                <div style={{display: 'flex', alignItems: 'center', gap: 4}}><div style={{width: 8, height: 8, background: '#14B8A6'}}></div> Grupo VFlow</div>
+            <div className={styles.calendarLegendContainer}>
+              {/* Fita de Categorias / Produtos */}
+              <div className={styles.legendScrollStrip}>
+                <div className={styles.legendPill}>
+                  <span className={styles.legendDot} style={{background: '#2DD4BF'}}></span>
+                  <span>Workshop VFlow</span>
+                </div>
+                <div className={styles.legendPill}>
+                  <span className={styles.legendDot} style={{background: '#6366F1'}}></span>
+                  <span>Curso VFlow</span>
+                </div>
+                <div className={styles.legendPill}>
+                  <span className={styles.legendDot} style={{background: '#8B5CF6'}}></span>
+                  <span>Mentoria</span>
+                </div>
+                <div className={styles.legendPill}>
+                  <span className={styles.legendDot} style={{background: '#EC4899'}}></span>
+                  <span>Heroes</span>
+                </div>
+                <div className={styles.legendPill}>
+                  <span className={styles.legendDot} style={{background: '#14B8A6'}}></span>
+                  <span>Grupo VFlow</span>
+                </div>
               </div>
-              <div style={{display: 'flex', gap: 12}}>
-                <div style={{display: 'flex', alignItems: 'center', gap: 4}}><span style={{color: '#8B5CF6'}}>■</span> Planejada</div>
-                <div style={{display: 'flex', alignItems: 'center', gap: 4}}><span style={{color: '#F59E0B'}}>■</span> Em Execução</div>
-                <div style={{display: 'flex', alignItems: 'center', gap: 4}}><span style={{color: '#10B981'}}>■</span> Concluída</div>
+
+              {/* Fita de Status */}
+              <div className={styles.legendScrollStrip}>
+                <div className={styles.legendPill}>
+                  <span className={styles.legendDot} style={{background: '#8B5CF6'}}></span>
+                  <span>Planejada</span>
+                </div>
+                <div className={styles.legendPill}>
+                  <span className={styles.legendDot} style={{background: '#F59E0B'}}></span>
+                  <span>Em Execução</span>
+                </div>
+                <div className={styles.legendPill}>
+                  <span className={styles.legendDot} style={{background: '#10B981'}}></span>
+                  <span>Concluída</span>
+                </div>
               </div>
             </div>
           </div>

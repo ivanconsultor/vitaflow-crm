@@ -138,7 +138,7 @@
 /* Followers Mini Cards Grid */
 .miniCardsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr));
   gap: 12px;
 }
 
@@ -260,7 +260,7 @@
 /* Charts Section */
 .chartsSection {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 16px;
 }
 
@@ -296,6 +296,8 @@
   border-radius: 12px;
   padding: 24px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  min-width: 0;
 }
 
 .tableTitle {
@@ -470,3 +472,52 @@
 .bgPinterest { background: rgba(244, 63, 94, 0.1); border: 1px solid rgba(244, 63, 94, 0.2); color: #F43F5E; }
 .bgStory { background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.2); color: #8B5CF6; }
 .bgYouTube { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2); color: #EF4444; }
+
+/* ===== Responsivo: tablet e celular ===== */
+@media (max-width: 1024px) {
+  .title {
+    padding: 16px;
+  }
+  .kpisGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .chartCard, .tableCard {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    padding: 16px 0;
+  }
+  /* Filtros: quebram linha em vez de vazar pela direita */
+  .dateFilters,
+  .platformFilters {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .dateRangeLabel {
+    margin-left: 0;
+    flex: 1 1 100%;
+  }
+  .filterBtn,
+  .pillBtn {
+    flex: 0 0 auto;
+  }
+  .kpisGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .chartCard, .tableCard {
+    padding: 16px;
+  }
+  .chartTitle, .tableTitle {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .dataTable th, .dataTable td {
+    padding: 8px 10px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+}

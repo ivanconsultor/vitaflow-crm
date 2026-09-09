@@ -150,3 +150,37 @@
   font-size: 0.75rem;
   color: #a0aec0;
 }
+
+/* ===== Responsivo: tablet ===== */
+@media (max-width: 1024px) {
+  .container {
+    gap: 1.25rem;
+  }
+  .metricsHeader {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .metricCard {
+    flex: 1 1 calc(50% - 0.5rem);
+    padding: 1.25rem;
+  }
+}
+
+/* ===== Responsivo: celular ===== */
+@media (max-width: 768px) {
+  .metricCard {
+    flex: 1 1 100%;
+    padding: 1rem;
+  }
+  .metricIconWrap {
+    padding: 0.75rem;
+  }
+  /* Colunas um pouco mais estreitas: o board continua deslizando na horizontal */
+  .column {
+    flex: 0 0 246px;
+  }
+  .columnHeader,
+  .columnBody {
+    padding: 0.75rem;
+  }
+}

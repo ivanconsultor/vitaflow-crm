@@ -15,17 +15,30 @@
 .pageContainer {
   flex: 1;
   padding: 32px;
-  max-width: 100%;
+  /* Trava a largura do conteudo: em monitor grande as telas de coluna unica
+     esticavam de ponta a ponta e ficavam vazias. Abaixo de 1360px nada muda. */
+  max-width: 1360px;
   width: 100%;
   margin: 0 auto;
   min-width: 0;
 }
 
-@media (max-width: 768px) {
+.backdrop {
+  display: none;
+}
+
+@media (max-width: 1024px) {
   .mainContent {
     margin-left: 0;
   }
   .pageContainer {
     padding: 16px;
+  }
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
   }
 }

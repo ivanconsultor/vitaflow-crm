@@ -134,3 +134,20 @@
   border: 1px solid rgba(239, 68, 68, 0.2);
   text-align: center;
 }
+
+/* ===== Responsivo: celular e tablet ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 28px 22px;
+    border-radius: 20px;
+  }
+  .title {
+    font-size: 24px;
+  }
+}

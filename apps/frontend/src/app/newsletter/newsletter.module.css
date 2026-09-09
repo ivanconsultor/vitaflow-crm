@@ -839,3 +839,116 @@
   text-transform: uppercase;
   background: rgba(255,255,255,0.05);
 }
+/* ===== Responsivo: tablet ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 16px;
+    gap: 20px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .kpiGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .actionGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Abas viram faixa deslizante em vez de espremer */
+  .headerNav {
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .headerNav::-webkit-scrollbar {
+    display: none;
+  }
+  .navBtn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 10px 16px;
+  }
+  .funnelLayer {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* ===== Responsivo: celular ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 4px 0 24px;
+    min-height: 0;
+  }
+  .header {
+    padding-bottom: 16px;
+  }
+  .title {
+    font-size: 16px;
+  }
+  .kpiGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .actionGrid {
+    grid-template-columns: 1fr;
+  }
+  .navBtn {
+    font-size: 12px;
+    padding: 9px 14px;
+  }
+  /* Filtros do ranking: faixa deslizante em vez de vazar pela direita */
+  .rankingFilters {
+    overflow-x: auto;
+    gap: 8px;
+    scrollbar-width: none;
+  }
+  .rankingFilters::-webkit-scrollbar {
+    display: none;
+  }
+  .rankingFilterBtn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 6px 10px;
+  }
+  .rankingHeader {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  /* Funil de Distribuição de Audiência no Mobile */
+  .funnelContainer {
+    width: 100%;
+    max-width: 100%;
+  }
+  .funnelLayer {
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 12px 14px;
+  }
+  .funnelInvestigadores {
+    width: 100%;
+  }
+  .funnelAtivos {
+    width: 90%;
+  }
+  .funnelVazios {
+    width: 80%;
+  }
+  .funnelLeais {
+    width: 72%;
+  }
+  .funnelRegulares {
+    width: 65%;
+  }
+  .funnelLayerTitle {
+    font-size: 11px;
+  }
+  .funnelLayerDesc {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+  .funnelLayerValue {
+    font-size: 15px;
+  }
+}

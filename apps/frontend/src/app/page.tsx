@@ -96,7 +96,7 @@ export default function DashboardPage() {
     <div className={styles.container}>
       <header className={styles.header}>
         <div className={styles.titleContainer}>
-          <h1 className={styles.mainTitle}>OKR VFlow</h1>
+          <h1 className={styles.mainTitle}>OKR</h1>
           <span className={styles.subTitle}>Dados atualizados até final de Janeiro 2026</span>
         </div>
         

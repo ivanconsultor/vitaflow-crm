@@ -10,12 +10,6 @@
   gap: 28px;
 }
 
-@media (min-width: 1024px) {
-  .layout {
-    grid-template-columns: 320px 1fr;
-  }
-}
-
 .card {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -24,6 +18,7 @@
   box-shadow: var(--glass-shadow);
   border-radius: 12px;
   padding: 24px;
+  min-width: 0;
 }
 
 .cardTitle {
@@ -221,4 +216,57 @@
   text-align: center;
   padding: 32px;
   color: var(--text-muted);
+}
+
+/* ===== Responsivo: tablet ===== */
+@media (max-width: 1024px) {
+  .card {
+    padding: 20px;
+  }
+  .pubCard {
+    padding: 16px;
+    gap: 16px;
+  }
+}
+
+/* ===== Responsivo: celular ===== */
+@media (max-width: 768px) {
+  .container {
+    gap: 20px;
+  }
+  .card {
+    padding: 16px;
+  }
+  .cardTitle {
+    font-size: 15px;
+    margin-bottom: 16px;
+  }
+  .input, .select, .textarea {
+    font-size: 16px; /* evita auto-zoom no iOS Safari */
+    padding: 10px;
+  }
+  .pubCard {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px;
+    gap: 12px;
+  }
+  .pubHeader {
+    gap: 8px;
+  }
+  .pubDate {
+    font-size: 10px;
+  }
+  .pubTitle {
+    font-size: 14px;
+  }
+  .pubContent {
+    font-size: 12px;
+  }
+  .deleteBtn {
+    align-self: flex-end;
+    padding: 4px 8px;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 4px;
+  }
 }

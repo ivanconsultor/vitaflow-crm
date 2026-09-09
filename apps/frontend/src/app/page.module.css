@@ -190,7 +190,7 @@
 /* KR Cards */
 .krsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 16px;
 }
 
@@ -315,4 +315,64 @@
   text-align: center;
   padding: 60px;
   color: #8A8A93;
+}
+
+/* Breakpoints: 1024px = tablet em pe / 768px = celular */
+
+/* ===== Responsivo: tablet ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 16px;
+  }
+  .headerControls {
+    flex-wrap: wrap;
+  }
+}
+
+/* ===== Responsivo: celular ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .headerControls {
+    width: 100%;
+  }
+  .mainTitle {
+    font-size: 22px;
+  }
+  .areaHeader {
+    padding: 14px 16px;
+  }
+  .areaHeaderLeft {
+    min-width: 0;
+  }
+  .areaTitle {
+    font-size: 15px;
+    flex-wrap: wrap;
+  }
+  .areaProgress {
+    font-size: 17px;
+  }
+  .areaContent {
+    padding: 16px;
+  }
+  .krCard {
+    padding: 16px;
+    gap: 16px;
+  }
+  .krHeader {
+    gap: 8px;
+  }
+  .krStatusBadge {
+    white-space: nowrap;
+  }
+  .krAtual {
+    font-size: 21px;
+  }
 }

@@ -28,12 +28,6 @@
   gap: 24px;
 }
 
-@media (min-width: 1024px) {
-  .integrationGrid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
 .card {
   background: var(--glass-bg);
   backdrop-filter: var(--glass-blur);
@@ -42,6 +36,7 @@
   box-shadow: var(--glass-shadow);
   border-radius: 12px;
   padding: 24px;
+  min-width: 0;
 }
 
 .cardHeader {
@@ -87,6 +82,8 @@
   color: #e0e0e0;
   white-space: pre-wrap;
   word-break: break-all;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: 16px;
 }
 
@@ -143,4 +140,45 @@
   border-radius: 4px;
   font-size: 12px;
   font-weight: 600;
+}
+
+/* ===== Responsivo: tablet ===== */
+@media (max-width: 1024px) {
+  .container {
+    padding: 20px;
+  }
+  .card {
+    padding: 20px;
+  }
+}
+
+/* ===== Responsivo: celular ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 8px 0 24px;
+  }
+  .header {
+    margin-bottom: 24px;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .subtitle {
+    font-size: 14px;
+  }
+  .card {
+    padding: 16px;
+  }
+  .cardTitle {
+    font-size: 17px;
+  }
+  .input {
+    font-size: 16px; /* evita auto-zoom no iOS Safari */
+    padding: 10px;
+  }
+  .copyButton {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+  }
 }

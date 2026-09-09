@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar";
@@ -9,6 +10,12 @@ import styles from "../app/layout.module.css";
 export default function AuthClientWrapper({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth();
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Fecha a gaveta (mobile) sempre que a rota mudar
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   if (isLoading) {
     return (
@@ -28,9 +35,12 @@ export default function AuthClientWrapper({ children }: { children: React.ReactN
 
   return (
     <>
-      <Sidebar />
+      <Sidebar isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+      {menuOpen && (
+        <div className={styles.backdrop} onClick={() => setMenuOpen(false)} />
+      )}
       <div className={styles.mainContent}>
-        <Header />
+        <Header onMenuClick={() => setMenuOpen(true)} />
         <main className={styles.pageContainer}>{children}</main>
       </div>
     </>

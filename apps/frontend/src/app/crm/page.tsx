@@ -253,13 +253,12 @@ export default function CrmPage() {
 
         {/* Table Column */}
         <section className={styles.cardMain || styles.card}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+          <div className={styles.tableHeaderBar}>
             <h2 className={styles.cardTitle} style={{ marginBottom: 0 }}>Base de Leads Cadastrados</h2>
             <button 
               onClick={handleSync} 
               disabled={syncing}
-              className={styles.submitBtn} 
-              style={{ marginTop: 0, padding: "0.5rem 1rem", backgroundColor: "#3B82F6" }}
+              className={styles.syncBtn}
             >
               {syncing ? "Sincronizando..." : "Sincronizar Agora (Systeme.io)"}
             </button>

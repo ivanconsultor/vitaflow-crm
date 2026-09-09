@@ -162,7 +162,7 @@
 /* Grid de Funis */
 .funnelGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
   gap: 24px;
 }
 
@@ -310,4 +310,35 @@
   background: #0B0E14;
   border: 1px dashed #374151;
   border-radius: 12px;
+}
+
+/* ===== Responsivo: tablet e celular ===== */
+@media (max-width: 1024px) {
+  .pipeline {
+    padding: 24px 16px;
+  }
+  .kpiRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .pipeline {
+    padding: 16px 12px;
+  }
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .headerActions {
+    flex-wrap: wrap;
+  }
+  .kpiRow {
+    gap: 14px;
+  }
+  .pipelineStage {
+    min-width: 0;
+    padding: 12px 14px;
+  }
 }

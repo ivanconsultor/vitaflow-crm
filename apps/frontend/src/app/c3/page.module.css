@@ -1,105 +1,501 @@
-.coverContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 64px);
-  background-color: var(--bg-primary);
-  padding: 40px;
+/* ══════════════════════════════════════════════
+   C3 — MÓDULO CONEXÃO (HUB + FUNIL)
+   Tema: Cyan #06B6D4
+   ══════════════════════════════════════════════ */
+
+.container {
+  padding: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.contentWrapper {
-  max-width: 800px;
-  width: 100%;
+/* ═══ HEADER ═══ */
+.moduleHeader {
+  margin-bottom: 32px;
 }
 
-.badge {
+.badgeC3 {
   display: inline-block;
   padding: 4px 12px;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 24px;
+  letter-spacing: 1.2px;
+  color: #06B6D4;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  margin-bottom: 12px;
 }
 
 .title {
-  font-size: 56px;
+  font-size: 36px;
   font-weight: 800;
   letter-spacing: -1px;
-  margin: 0 0 16px 0;
-  line-height: 1;
+  margin: 0 0 8px 0;
+  color: #E5E7EB;
 }
 
 .subtitle {
-  font-size: 20px;
+  font-size: 16px;
   color: #8A8A93;
-  margin-bottom: 32px;
+  margin: 0;
   font-weight: 400;
 }
 
-.divider {
-  width: 64px;
-  height: 4px;
-  margin-bottom: 40px;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 48px 0;
-  display: flex;
-  flex-direction: column;
+/* ═══ GRID SUPERIOR (Atalhos + KPIs) ═══ */
+.topGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 24px;
+  margin-bottom: 32px;
 }
 
-.listItem {
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #6B7280;
+  text-transform: uppercase;
+  margin: 0 0 16px 0;
+}
+
+/* ═══ MEGA CARDS (Atalhos) ═══ */
+.megaCard {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #D1D5DB;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(6, 182, 212, 0.03);
+  border: 1px solid rgba(6, 182, 212, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+  margin-bottom: 10px;
 }
 
-.bulletPoint {
-  margin-top: 8px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+.megaCard:hover {
+  background: rgba(6, 182, 212, 0.08);
+  border-color: rgba(6, 182, 212, 0.2);
+  transform: translateY(-1px);
+}
+
+.megaCardIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #06B6D4;
+  background: rgba(6, 182, 212, 0.1);
   flex-shrink: 0;
 }
 
-.strongText {
+.megaCardContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.megaCardContent h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #E5E7EB;
+  margin: 0 0 4px 0;
+}
+
+.megaCardContent p {
+  font-size: 13px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.arrow {
+  color: #4B5563;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.megaCard:hover .arrow {
+  transform: translateX(3px);
+  color: #06B6D4;
+}
+
+/* ═══ KPI WIDGET ═══ */
+.kpiWidget {
+  background: rgba(6, 182, 212, 0.03);
+  border: 1px solid rgba(6, 182, 212, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.kpiWidgetHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.kpiWidgetHeader h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #E5E7EB;
+  margin: 0;
+}
+
+.statusBadge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: #06B6D4;
+  background: rgba(6, 182, 212, 0.1);
+}
+
+.kpiList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kpiItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kpiItemIcon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  color: #6B7280;
+  flex-shrink: 0;
+}
+
+.kpiLabel {
+  flex: 1;
+  font-size: 13px;
+  color: #8A8A93;
+}
+
+.kpiValue {
+  font-size: 15px;
+  font-weight: 700;
+  color: #E5E7EB;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ══════════════════════════════════════════════
+   FUNIL DE SEGMENTOS
+   ══════════════════════════════════════════════ */
+.funnelSection {
+  background: rgba(6, 182, 212, 0.02);
+  border: 1px solid rgba(6, 182, 212, 0.08);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 28px;
+}
+
+.funnelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.funnelTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #E5E7EB;
+}
+
+.funnelTitle svg {
+  color: #06B6D4;
+}
+
+.funnelTotal {
+  text-align: right;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #6B7280;
+}
+
+.funnelTotalValue {
+  font-size: 28px;
+  font-weight: 800;
+  color: #E5E7EB;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin-top: 2px;
+}
+
+/* ═══ Funil Layers ═══ */
+.funnelContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.funnelLayer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 24px;
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.funnelLayer:hover {
+  transform: scale(1.01);
+}
+
+.funnelLayerIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.funnelLayerInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.funnelLayerTitle {
+  font-size: 14px;
   font-weight: 700;
   color: #fff;
 }
 
-.actions {
-  display: flex;
+.funnelLayerDesc {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+.funnelLayerValue {
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.funnelLayerValue span {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 6px;
+}
+
+/* Cores e larguras do funil invertido */
+.funnelLeais {
+  width: 55%;
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.3), rgba(74, 222, 128, 0.15));
+  border: 1px solid rgba(74, 222, 128, 0.25);
+}
+.funnelLeais .funnelLayerIcon { color: #4ADE80; }
+
+.funnelAtivos {
+  width: 68%;
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.3), rgba(96, 165, 250, 0.15));
+  border: 1px solid rgba(96, 165, 250, 0.25);
+}
+.funnelAtivos .funnelLayerIcon { color: #60A5FA; }
+
+.funnelRegulares {
+  width: 78%;
+  background: linear-gradient(135deg, rgba(250, 204, 21, 0.25), rgba(250, 204, 21, 0.1));
+  border: 1px solid rgba(250, 204, 21, 0.2);
+}
+.funnelRegulares .funnelLayerIcon { color: #FACC15; }
+
+.funnelInvestigadores {
+  width: 88%;
+  background: linear-gradient(135deg, rgba(251, 146, 60, 0.25), rgba(251, 146, 60, 0.1));
+  border: 1px solid rgba(251, 146, 60, 0.2);
+}
+.funnelInvestigadores .funnelLayerIcon { color: #FB923C; }
+
+.funnelVazios {
+  width: 100%;
+  background: linear-gradient(135deg, rgba(248, 113, 113, 0.2), rgba(248, 113, 113, 0.08));
+  border: 1px solid rgba(248, 113, 113, 0.15);
+}
+.funnelVazios .funnelLayerIcon { color: #F87171; }
+
+/* ══════════════════════════════════════════════
+   ACTION CARDS (Limpeza / Nutrição / Clicantes)
+   ══════════════════════════════════════════════ */
+.actionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+}
+
+.actionCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+
+.actionCard:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.actionCardTop {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.actionIconBox {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.actionStats {
+  flex: 1;
+}
+
+.actionStatsTitle {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #6B7280;
+  margin-bottom: 2px;
+}
+
+.actionStatsValue {
+  font-size: 22px;
+  font-weight: 800;
+  color: #E5E7EB;
+  font-variant-numeric: tabular-nums;
+}
+
+.actionDesc {
+  font-size: 13px;
+  color: #8A8A93;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+.actionTags {
+  display: flex;
+  gap: 8px;
   flex-wrap: wrap;
 }
 
-.actionBtn {
-  display: flex;
+.actionPill {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-  color: #000;
-  text-decoration: none;
-  transition: opacity 0.2s;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
-.actionBtn:hover {
-  opacity: 0.9;
+/* ══════════════════════════════════════════════
+   RESPONSIVO: TABLET
+   ══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  .topGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .funnelLayer {
+    padding: 12px 16px;
+  }
+
+  .funnelLeais { width: 65%; }
+  .funnelAtivos { width: 75%; }
+  .funnelRegulares { width: 85%; }
+  .funnelInvestigadores { width: 92%; }
+  .funnelVazios { width: 100%; }
 }
 
-/* C3 Theme - Cyan */
-.badgeC3 { background-color: #06B6D4; color: #000; }
-.titleC3 { color: #06B6D4; }
-.dividerC3 { background-color: #06B6D4; }
-.bulletPointC3 { background-color: #06B6D4; }
-.actionBtnC3 { background-color: #06B6D4; }
+/* ══════════════════════════════════════════════
+   RESPONSIVO: CELULAR
+   ══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px 8px 32px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .topGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .funnelHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .funnelTotal {
+    text-align: left;
+  }
+
+  .funnelLeais,
+  .funnelAtivos,
+  .funnelRegulares,
+  .funnelInvestigadores,
+  .funnelVazios {
+    width: 100%;
+  }
+
+  .funnelLayerValue {
+    font-size: 15px;
+  }
+
+  .actionGrid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
