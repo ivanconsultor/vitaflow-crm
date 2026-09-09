@@ -3,67 +3,15 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import { 
-  LayoutDashboard, Users, TrendingUp, Calendar, Target, 
-  Sparkles, DollarSign, PenTool, BarChart, Link2, Kanban,
-  ChevronDown, ChevronRight, Mail, LogOut, Megaphone
-} from "lucide-react";
+import { ChevronDown, ChevronRight, LogOut } from "lucide-react";
 import styles from "./Sidebar.module.css";
 import { useAuth } from "../hooks/useAuth";
+import { menuGroups } from "../config/menu";
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen = false, onClose }: { isOpen?: boolean; onClose?: () => void }) {
   const pathname = usePathname();
   const router = useRouter();
   const { isAuthenticated, isLoading, logout } = useAuth();
-
-  const menuGroups = [
-    {
-      badge: "C1",
-      badgeClass: styles.badgeC1,
-      title: "Configuração",
-      path: "/c1",
-      items: [
-        { name: "OKR VFlow", path: "/", icon: Target },
-        { name: "Analytics Global", path: "/analytics", icon: BarChart },
-        { name: "CRM Leads", path: "/crm", icon: Users },
-        { name: "CRM Prospects", path: "/prospectos", icon: Kanban },
-        { name: "Integrações", path: "/integracoes", icon: Link2 },
-      ]
-    },
-    {
-      badge: "C2",
-      badgeClass: styles.badgeC2,
-      title: "Captação",
-      path: "/c2",
-      items: [
-        { name: "Gestão de Campanhas", path: "/campanhas", icon: Megaphone },
-        { name: "Ads & IA", path: "/ads", icon: Sparkles },
-        { name: "Landing Pages", path: "/capture", icon: Target },
-      ]
-    },
-    {
-      badge: "C3",
-      badgeClass: styles.badgeC3,
-      title: "Conexão",
-      path: "/c3",
-      items: [
-        { name: "Newsletter", path: "/newsletter", icon: Mail },
-        { name: "Conteúdos", path: "/conteudo", icon: PenTool },
-        { name: "Calendário", path: "/editorial", icon: Calendar },
-      ]
-    },
-    {
-      badge: "C4",
-      badgeClass: styles.badgeC4,
-      title: "Conversão",
-      path: "/c4",
-      items: [
-        { name: "Kanban Vendas", path: "/kambam-vendas", icon: Kanban },
-        { name: "Funis", path: "/funnels", icon: TrendingUp },
-        { name: "Vendas", path: "/vendas", icon: DollarSign },
-      ]
-    }
-  ];
 
   const [openGroups, setOpenGroups] = useState<string[]>([]);
   const [hoveredGroup, setHoveredGroup] = useState<string | null>(null);
@@ -89,6 +37,7 @@ export default function Sidebar() {
     
     // Se clicou no botão principal (badge ou titulo), navega pra rota da capa
     router.push(group.path);
+    onClose?.();
     // E garante que abre
     if (!openGroups.includes(group.title)) {
       setOpenGroups(prev => [...prev, group.title]);
@@ -112,7 +61,7 @@ export default function Sidebar() {
   if (pathname === "/login") return null;
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ""}`}>
       <div className={styles.logoContainer}>
         <span className={styles.logoText}>VitaFlow</span>
       </div>
@@ -136,7 +85,7 @@ export default function Sidebar() {
                 onMouseLeave={() => setHoveredGroup(null)}
               >
                 <div className={styles.groupTitleWrapper}>
-                  <span className={`${group.badgeClass}`}>{group.badge}</span>
+                  <span className={styles[`badge${group.badge}`] ?? styles.badgeDefault}>{group.badge}</span>
                   <span className={styles.groupTitle}>{group.title}</span>
                 </div>
                 
@@ -154,6 +103,7 @@ export default function Sidebar() {
                       key={item.path}
                       href={item.path}
                       className={`${styles.navLink} ${isActive ? styles.active : ""}`}
+                      onClick={() => onClose?.()}
                     >
                       <Icon size={16} />
                       <span>{item.name}</span>
@@ -166,17 +116,14 @@ export default function Sidebar() {
         })}
       </nav>
 
-      <div className={styles.footer} style={{textAlign: 'left', padding: '16px 12px', borderTop: 'none', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-        <div>
-          <div style={{color: '#8A8A93', fontSize: '10px', marginBottom: '4px'}}>@vitanews</div>
-          <div style={{color: '#8A8A93', fontSize: '10px'}}>vitanews.com</div>
-        </div>
+      <div className={styles.footer} style={{padding: '16px 12px', borderTop: 'none', display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
         <button 
           onClick={logout} 
-          style={{ background: 'transparent', border: 'none', color: '#EF4444', cursor: 'pointer', padding: '8px', borderRadius: '8px' }}
+          style={{ background: 'transparent', border: 'none', color: '#EF4444', cursor: 'pointer', padding: '8px 12px', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', fontWeight: 500 }}
           title="Sair do Sistema"
         >
           <LogOut size={16} />
+          <span>Sair</span>
         </button>
       </div>
     </aside>
