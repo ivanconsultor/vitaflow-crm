@@ -4,6 +4,30 @@ Este arquivo centraliza as regras exclusivas, topologia de arquitetura, guias de
 
 ---
 
+## REGRA ZERO — Método de trabalho (vale antes de qualquer outra seção)
+
+Esta regra existe porque em 08/09/2026 um ajuste responsivo simples consumiu horas e tokens em tentativa-e-erro. A causa não foi dificuldade técnica: foi editar sem ler, declarar pronto sem medir e repetir a mesma tentativa. As seis linhas abaixo são obrigatórias e vêm antes de qualquer outra regra deste arquivo.
+
+1. **Ler antes de editar.** Localizar a causa no código e enunciá-la em até 3 linhas para o Ivan antes de tocar em qualquer arquivo. Proibido editar CSS, JSX ou JS "para ver se resolve".
+
+2. **Invocar as skills antes de planejar** (não depois, não se lembrar):
+   - `andrej-karpathy-skills:karpathy-guidelines` — sempre. Mudança cirúrgica, sem overengineering, com critério de sucesso verificável.
+   - `superpowers:systematic-debugging` — quando algo está quebrado ou se comporta errado.
+   - `frontend-design:frontend-design` ou `anthropic-skills:ui-ux-pro-max` — quando o trabalho é layout, CSS, tipografia ou responsividade.
+   - `superpowers:verification-before-completion` — antes de dizer que está pronto.
+
+3. **Um passe por vez.** Uma hipótese, uma correção, um arquivo sempre que possível. Nada de mexer em cinco arquivos na mesma tentativa.
+
+4. **Medir antes de declarar pronto.** Para qualquer mudança visual: abrir no navegador em 375px e 768px e aplicar o critério da seção 3.1, item 6 (zero elementos estourando a viewport fora de container com rolagem). Sem medição feita e mostrada, não se diz "corrigido".
+
+5. **Limite de duas tentativas.** Se a segunda tentativa não resolver, parar. Escrever o diagnóstico do que foi testado, o que foi descartado e qual a hipótese restante, e devolver a decisão para o Ivan. Proibida uma terceira tentativa da mesma natureza.
+
+6. **Nunca repetir uma operação que já falhou** sem antes mudar a hipótese e dizer explicitamente o que mudou. Repetição sem hipótese nova é o que queima o orçamento do Ivan.
+
+> Se em algum momento a resposta a "por que essa tentativa vai dar certo?" for "talvez dê", a regra 5 já foi atingida. Parar e reportar.
+
+---
+
 ## 🟢 1. Inicialização do Sistema (Frontend e Backend)
 - **Frontend**: Rodar `npm run dev` na pasta `apps/frontend` (Porta/Acesso: `http://localhost:3005`).
 - **Backend**: Rodar `npm run dev` na pasta `apps/backend` (Porta/Acesso: `http://localhost:3001`).
@@ -38,6 +62,28 @@ Sempre que o usuário fornecer imagens de referência para a construção de um 
 REGRA CRÍTICA DE INTEGRAÇÃO: O agente é TERMINANTEMENTE PROIBIDO de deletar, simplificar, ocultar ou destruir qualquer layout, design, acordeão, botão, aba ou estrutura de frontend pré-existente para implementar qualquer integração de backend (APIs, webhooks, N8N, bancos de dados, etc.). 
 Qualquer integração de dados dinâmicos DEVE ser injetada de forma cirúrgica e invisível dentro do design original rico que o usuário já construiu e testou, mantendo fallbacks estáticos para preservar a integridade visual intacta em qualquer circunstância.
 </RULE[no_destruction]>
+
+---
+
+## 📱 3.1 Padrao Responsivo (mobile e tablet)
+
+O CRM usa **duas faixas**, sempre nesta ordem, no fim de cada `*.module.css`:
+
+- `@media (max-width: 1024px)` — **tablet**. A sidebar vira gaveta (hamburguer no Header + backdrop) e as colunas laterais descem para baixo do conteudo.
+- `@media (max-width: 768px)` — **celular**. Cabecalhos empilham, grades caem para 1 ou 2 colunas e os paddings encolhem.
+
+Regras praticas:
+1. **Painel lateral nao existe: e sempre uma coluna so.** O CRM e **unico** — a mesma tela no celular, no tablet e no desktop. Todo bloco que antes ficava ao lado do conteudo agora fica **abaixo** dele em qualquer largura (`grid-template-columns: 1fr` na regra base, sem override de desktop): resumo dos hubs C1-C4, formulario do CRM Leads, formulario do Calendario Editorial, painel de Conteudos, cards de Integracoes, formulario de Ads > Criativos, os dois graficos do Analytics e os funis de Vendas.
+   - **Excecao: fileiras de KPI.** Cartoes de indicador continuam em grade (5-6 colunas no desktop, 2-3 no tablet, 1-2 no celular). Eles nao sao painel lateral, e empilhar seis cartoes num monitor de 1440px deixaria a tela vazia.
+2. **Tabela nao quebra: rola.** Toda tabela fica dentro de um wrapper com `overflow-x: auto`. Nao esconder colunas.
+3. **Fila de abas/filtros nao quebra linha: desliza.** `overflow-x: auto` + `flex: 0 0 auto` nos botoes (ex.: `.pillNav` em vendas, `.headerNav` em newsletter).
+4. **Selects e filtros empilham** (`flex: 1 1 100%`) em vez de vazar pela direita.
+5. **Modal ganha respiro**: `padding` no overlay e `overflow-y: auto` no conteudo.
+6. **Antes de dar por pronto**, medir estouro real no navegador: elemento cujo `getBoundingClientRect().right` passa da largura da viewport e que **nao** esteja dentro de um container com `overflow-x` de rolagem. A meta e zero.
+
+> `body { overflow-x: hidden }` em `globals.css` continua la como rede de seguranca. Ele **esconde** estouro, nao corrige — por isso a medicao do item 6 ignora essa protecao.
+
+> As telas C1, C2, C3 e C4 compartilham **um unico arquivo**: `src/app/c1/page.module.css`. Mexer nele altera as quatro. Os arquivos `c2/`, `c3/` e `c4/page.module.css` existem mas nao sao importados por ninguem.
 
 ---
 
